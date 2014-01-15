@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   validates :username, :session_token, :uniqueness => true
   validates :password, :length => { :minimum => 6, :allow_nil => true }
   
+  has_many :notebooks
+  
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
     return nil if user.nil?

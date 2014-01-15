@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_filter :logged_in?, :only => [:show]
+  before_filter :logged_in?, :only => [:show]
 
   def new
   end
@@ -16,6 +16,11 @@ class UsersController < ApplicationController
   end
   
   def show
+    if params[:id].to_i != current_user.id
+      redirect_to user_url(current_user)
+    else
+      @user = current_user
+    end
   end
 
 end
