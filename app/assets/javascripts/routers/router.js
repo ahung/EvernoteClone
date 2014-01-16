@@ -8,13 +8,12 @@ EvernoteClone.Routers.Router = Backbone.Router.extend({
    "notebooks/new": "notebookNew",
    "notebooks/:id": "notebookShow",
    "notebooks/:id/edit": "notebookEdit"
-   
   },
   
   notebooksIndex: function() {
     // var notebooksIndex = new EvernoteClone.Views.NotebooksIndex({
     //   collection: 
-    });
+    // });
   },
   
   notebookNew: function() {
