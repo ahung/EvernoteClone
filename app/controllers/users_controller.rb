@@ -13,11 +13,8 @@ class UsersController < ApplicationController
   end
   
   def show
-    # if params[:id].to_i != current_user.id
-    #   redirect_to user_url(current_user)
-    # else
-    #   @user = current_user
-    # end
+    @user = User.find(params[:id])
+    render :json => @user
   end
 
 end
