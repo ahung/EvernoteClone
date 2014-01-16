@@ -8,6 +8,7 @@ class NotebooksController < ApplicationController
   end
 
   def new
+    @notebook = Notebook.new()
   end
 
   def create
@@ -20,9 +21,16 @@ class NotebooksController < ApplicationController
   end
 
   def edit
+    @notebook = Notebook.find(params[:id])
   end
 
   def update
+    @notebook = Notebook.find(params[:id])
+    if @notebook.update_attributes(params[:notebook])
+      render :json => @notebook
+    else
+      render :json => @notebook.errors
+    end
   end
 
   def destroy

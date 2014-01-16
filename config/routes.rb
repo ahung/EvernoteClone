@@ -6,5 +6,7 @@ EvernoteClone::Application.routes.draw do
   
   resources :notebooks
   
+  resources :notes
+  
   root :to => "root#root"
 end

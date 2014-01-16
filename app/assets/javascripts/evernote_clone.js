@@ -4,7 +4,8 @@ window.EvernoteClone = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    new EvernoteClone.Routers.Router();
+    Backbone.history.start();
   }
 };
 
