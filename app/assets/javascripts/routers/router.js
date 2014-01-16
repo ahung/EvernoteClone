@@ -11,9 +11,17 @@ EvernoteClone.Routers.Router = Backbone.Router.extend({
   },
   
   notebooksIndex: function() {
-    // var notebooksIndex = new EvernoteClone.Views.NotebooksIndex({
-    //   collection: 
-    // });
+    var that = this;
+    var notebooks = new EvernoteClone.Collections.Notebooks();
+    notebooks.fetch({
+      success: function() {
+        var notebooksIndex = new EvernoteClone.Views.NotebooksIndex({
+          collection: notebooks
+        });
+        that._swapView(notebooksIndex);
+        $("#left-column").html(notebooksIndex.render().$el);
+      }
+    });
   },
   
   notebookNew: function() {
@@ -33,6 +41,7 @@ EvernoteClone.Routers.Router = Backbone.Router.extend({
   },
   
   _swapView: function(view) {
-    
+    this._currentView && this._currentView.remove();
+    this._currentView = view;
   }
 });

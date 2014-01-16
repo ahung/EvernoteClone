@@ -19,9 +19,9 @@
     </div>
     <div class="collapse navbar-collapse" id="main-nav">
       <ul class="nav navbar-nav navbar-left">
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Support</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/support">Support</a></li>
       </ul>
 
       <% if logged_in? %>
@@ -56,12 +56,16 @@
   </nav>
   
   <% if flash[:errors] %>
-    <div class="alert alert-danger alert-dismissable">
-      <button type="button" class="close" data-dismiss="alert"
-         aria-hidden="true">&times;</button>
-      <% flash[:errors].each do |message| %>
-        <li> <%= message %> </li>
-      <% end %>
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <div class="alert alert-danger alert-dismissable text-center">
+          <button type="button" class="close" data-dismiss="alert"
+             aria-hidden="true">&times;</button>
+          <% flash[:errors].each do |message| %>
+            <li> <%= message %> </li>
+          <% end %>
+        </div>
+      </div>
     </div>
   <% end %>
   
@@ -81,7 +85,7 @@
   <div class="modal fade" id="sign-up-modal">
     <div class="modal-dialog">
       <div class="modal-content">
-        <%= render "users/form" %>
+        <%= render "/users/form" %>
       </div>
     </div>
   </div>

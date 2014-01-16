@@ -6,4 +6,16 @@ class RootController < ApplicationController
       render :welcome
     end
   end
+  
+  def about
+  end
+  
+  def contact
+  end
+  
+  def support
+  end
+  
+  
+  
 end

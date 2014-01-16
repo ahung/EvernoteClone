@@ -1,0 +1,6 @@
+<p><button type="button" class="btn btn-primary">New Notebook</button></p>
+<br>
+<% notebooks.each(function(notebook){ %> 
+  <p><a href="#notebook/<%=notebook.id%>"><b class="caret"></b>
+    <%= notebook.escape("name") %></a></p>
+<% }); %>
