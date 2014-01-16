@@ -6,7 +6,7 @@ window.EvernoteClone = {
   initialize: function() {
     new EvernoteClone.Routers.Router();
     Backbone.history.start();
-  }
+  };
 };
 
 $(document).ready(function(){
