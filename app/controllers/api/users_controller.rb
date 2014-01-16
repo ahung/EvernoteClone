@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::UsersController < ApplicationController
   before_filter :ensure_logged_in, :only => [:show]
 
   def create
@@ -6,14 +6,16 @@ class UsersController < ApplicationController
 
     if @user.save
       self.current_user = @user
+      flash[:notices] = ["Account Created!"]
       redirect_to root_url
     else
-      render :json => @user.errors.full_messages
+      flash[:errors] = @user.errors.full_messages
+      redirect_to root_url
     end
   end
   
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     render :json => @user
   end
 

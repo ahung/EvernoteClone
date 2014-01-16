@@ -1,16 +1,15 @@
 class SessionsController < ApplicationController
-  def new
-  end
   
   def create
     user = User.find_by_credentials(
       params[:user][:username],
-      params[:user][:password]
-    )
+      params[:user][:password])
     if user.nil?
-      render :json => "Credentials were wrong"
+      flash[:errors] = ["Invalid Username and/or Password"]
+      redirect_to root_url
     else
       self.current_user = user
+      flash[:notices] = ["Welcome Back!"]
       redirect_to root_url
     end
   end
@@ -19,4 +18,5 @@ class SessionsController < ApplicationController
     logout!
     redirect_to root_url
   end
+  
 end
