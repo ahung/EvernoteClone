@@ -1,14 +1,12 @@
-class NotebooksController < ApplicationController
+class Api::NotebooksController < ApplicationController
+  before_filter :ensure_logged_in
   def index
     @notebooks = current_user.notebooks
+    render :json => @notebooks
   end
 
   def show
     @notebook = Notebook.find(params[:id])
-  end
-
-  def new
-    @notebook = Notebook.new()
   end
 
   def create
@@ -18,10 +16,6 @@ class NotebooksController < ApplicationController
     else
       render :json => @notebook.errors
     end
-  end
-
-  def edit
-    @notebook = Notebook.find(params[:id])
   end
 
   def update

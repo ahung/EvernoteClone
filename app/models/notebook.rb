@@ -4,5 +4,5 @@ class Notebook < ActiveRecord::Base
   validates :name, :user_id, :presence => true
   
   belongs_to :user
-  has_many :note
+  has_many :notes
 end

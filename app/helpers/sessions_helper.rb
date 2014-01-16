@@ -15,7 +15,7 @@ module SessionsHelper
   end
   
   def ensure_logged_in
-    redirect_to new_session_url if current_user.nil?
+    redirect_to root_url if current_user.nil?
   end
   
   
