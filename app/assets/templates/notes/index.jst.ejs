@@ -1,0 +1,13 @@
+<p><a href="#/notebooks/<%= notes.notebookId %>/notes/new" 
+class="btn btn-primary"> + New Note </a></p>
+<br>
+<b><u>Notes</u></b>
+<br>
+<div class="bs-sidebar">
+  <ul class="nav bs-sidebar">
+    <% notes.each(function (note) { %>
+      <li><a href="#/notes/<%=note.id%>">
+        <%= note.escape("title") %></a></li>
+    <% }); %>
+  </ul>
+</div>

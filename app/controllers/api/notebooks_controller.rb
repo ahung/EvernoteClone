@@ -7,14 +7,17 @@ class Api::NotebooksController < ApplicationController
 
   def show
     @notebook = Notebook.find(params[:id])
+    @notes = @notebook.notes
+    render :json => @notes
   end
 
   def create
     @notebook = Notebook.new(params[:notebook])
+    @notebook.user_id = current_user.id
     if @notebook.save
       render :json => @notebook
     else
-      render :json => @notebook.errors
+      flash[:errors] = @notebook.errors.full_messages
     end
   end
 

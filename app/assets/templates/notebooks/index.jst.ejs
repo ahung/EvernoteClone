@@ -1,6 +1,16 @@
-<p><button type="button" class="btn btn-primary">New Notebook</button></p>
+<p><a href="#/notebooks/new" class="btn btn-primary">
+  + New Notebook</a></p>
 <br>
-<% notebooks.each(function(notebook){ %> 
-  <p><a href="#notebook/<%=notebook.id%>"><b class="caret"></b>
-    <%= notebook.escape("name") %></a></p>
-<% }); %>
+<b><u>Notebooks</u></b>
+<br>
+
+<div class="bs-sidebar">
+  <ul class="nav bs-sidebar">
+    <% notebooks.each(function(notebook){ %> 
+      <li><a href="#/notebooks/<%=notebook.id%>/notes">
+            <%= notebook.escape("name") %></a></li>
+    <% }); %>
+  </ul>
+</div>
+
+

@@ -14,14 +14,31 @@
 
 @import "bootstrap";
 
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+#note-view {
+  height: 100%;
+}
+
 #left-column {
   border: black solid;
+  height: 100%;
 }
 
 #middle-column {
   border: black solid;
+  height: 100%;
 }
 
 #right-column {
   border: black solid;
+  height: 100%;
 }
