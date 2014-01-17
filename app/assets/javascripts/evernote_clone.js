@@ -7,7 +7,8 @@ window.EvernoteClone = {
     new EvernoteClone.Routers.Router({
       $leftCol: $("#left-column"),
       $midCol: $("#middle-column"),
-      $rightCol: $("#right-column")
+      $rightCol: $("#right-column"),
+      $rootEl: $("#note-view")
     });
     Backbone.history.start();
   }

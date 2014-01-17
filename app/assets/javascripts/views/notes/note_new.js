@@ -1,7 +1,7 @@
 EvernoteClone.Views.NewNote = Backbone.View.extend({
   
   initialize: function (options) {
-    this.notebookId = options.notebookId;
+    this.notebook = options.notebook;
   },
   
   events: {
@@ -11,7 +11,7 @@ EvernoteClone.Views.NewNote = Backbone.View.extend({
   template: JST['notes/new'],
   
   render: function() {
-    var renderedContent = this.template({notebookId: this.notebookId})
+    var renderedContent = this.template({notebook: this.notebook})
     this.$el.html(renderedContent);
     return this;
   },
@@ -22,8 +22,7 @@ EvernoteClone.Views.NewNote = Backbone.View.extend({
     var params = $form.serializeJSON();
     var note = new EvernoteClone.Models.Note(params["note"]);
     note.save(null, {
-      success: function () {
-
+      success: function () {   
         Backbone.history.navigate("#/notebooks/" + note.get("notebook_id") 
         + "/notes",
         { trigger: true })

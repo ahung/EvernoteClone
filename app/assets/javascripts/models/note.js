@@ -1,5 +1,9 @@
 EvernoteClone.Models.Note = Backbone.Model.extend({
+  intialize: function () {
+  },
   
-  urlRoot: "/api/notes"
+  urlRoot: function () { 
+    return "/api/notes" 
+  }
 
 });

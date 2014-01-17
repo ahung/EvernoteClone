@@ -14,6 +14,11 @@ class Api::NotesController < ApplicationController
       render :json => @note.errors
     end
   end
+  
+  def show
+    @note = Note.find(params[:id])
+    render :json => @note
+  end
 
   def update
   end
