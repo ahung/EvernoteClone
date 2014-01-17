@@ -17,6 +17,7 @@
 html, body {
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 .container {
@@ -31,14 +32,17 @@ html, body {
 #left-column {
   border: black solid;
   height: 100%;
+  overflow: scroll;
 }
 
 #middle-column {
   border: black solid;
   height: 100%;
+  overflow: scroll;
 }
 
 #right-column {
   border: black solid;
   height: 100%;
+  overflow: scroll;
 }
