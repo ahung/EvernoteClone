@@ -1,4 +1,6 @@
 class Api::NotesController < ApplicationController
+  before_filter :ensure_logged_in
+  
   def index
     @notebook = Notebook.find(params[:notebook_id])
     @notes = @notebook.notes
@@ -21,8 +23,17 @@ class Api::NotesController < ApplicationController
   end
 
   def update
+    @note = Note.find(params[:id])
+    if @note.update_attributes(params[:note])
+      render :json => @note
+    else
+      render :json => @note.errors
+    end
   end
 
   def destroy
+    @note = Note.find(params[:id])
+    @note.destroy
+    render :json => {}
   end
 end

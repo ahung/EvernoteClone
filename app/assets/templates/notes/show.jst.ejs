@@ -1,5 +1,31 @@
+<button type="button" class="btn btn-danger" data-toggle="modal" 
+  data-target="#delete-note-modal"> Delete Note </button>
+
 <h3> <%= note.escape("title") %> </h3>
+  
+<br>
+
+<div class="note-body"
+<h5> <%= note.escape("body") %> </h5>
 
 <br>
 
-<h5> <%= note.escape("body") %> </h5>
+<div class="modal" id="delete-note-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4> Confirm Note Deletion </h4>
+      </div>
+      <div class="modal-body">
+        <p> Are You Sure You Want to Delete '<%= note.escape("title") %>' 
+          Forever? </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          Cancel</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" 
+          id="delete-note" data-id="<%= note.id %>"> Delete </button>
+      </div>
+    </div>
+  </div>
+</div>

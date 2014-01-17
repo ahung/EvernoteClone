@@ -1,5 +1,6 @@
 class Api::NotebooksController < ApplicationController
   before_filter :ensure_logged_in
+  
   def index
     @notebooks = current_user.notebooks
     render :json => @notebooks

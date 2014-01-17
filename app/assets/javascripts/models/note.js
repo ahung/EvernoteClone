@@ -1,5 +1,8 @@
 EvernoteClone.Models.Note = Backbone.Model.extend({
-  intialize: function () {
+  validate: function (attributes) {
+    if (!attributes || !attributes.title || attributes.title === ''){
+      return "Title Can't Be Blank";
+    }
   },
   
   urlRoot: function () { 

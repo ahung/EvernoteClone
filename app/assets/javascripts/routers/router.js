@@ -23,15 +23,6 @@ EvernoteClone.Routers.Router = Backbone.Router.extend({
     })
     this._swapLeftView(notebooksIndex);
     this.$midCol._currentView && this.$midCol._currentView.remove();
-    // var notebooks = new EvernoteClone.Collections.Notebooks();
- //    notebooks.fetch({
- //      success: function() {
- //        var notebooksIndex = new EvernoteClone.Views.NotebooksIndex({
- //          collection: notebooks
- //        });
- //        that._swapLeftView(notebooksIndex);
- //      }
- //    });
   },
   
   notebookNew: function() {
@@ -43,11 +34,12 @@ EvernoteClone.Routers.Router = Backbone.Router.extend({
   notesIndex: function(id) {
     var that = this;
     var notebook = EvernoteClone.notebooks.get(id);
-    var notes = new EvernoteClone.Collections.Notes([], {notebook: notebook});
-    notes.fetch({
+    EvernoteClone.notes = new EvernoteClone.Collections.Notes([], 
+      {notebook: notebook});
+    EvernoteClone.notes.fetch({
       success: function () {
         var notesIndex = new EvernoteClone.Views.NotesIndex({ 
-          collection: notes
+          collection: EvernoteClone.notes
         });
         that._swapMidView(notesIndex);
         that.$rightCol._currentView && that.$rightCol._currentView.remove();
@@ -66,6 +58,7 @@ EvernoteClone.Routers.Router = Backbone.Router.extend({
   },
   
   noteShow: function(id) {
+    // console.log(this._fullView());
     var that = this;
     this._getNote(id, function (note) {
       var showNote = new EvernoteClone.Views.ShowNote({model: note});
@@ -74,13 +67,19 @@ EvernoteClone.Routers.Router = Backbone.Router.extend({
   },
   
   _getNote: function(id, callback) {
-    var that = this; 
-    var note = new EvernoteClone.Models.Note({id: id});
-    note.fetch({
-      success: function () {
-        callback(note);
-      }
-    });
+    var note = EvernoteClone.notes.get(id);
+    if (note) {
+      callback(note);
+    } else {
+      note = new EvernoteClone.Models.Note({ id: id })
+      note.collection = EvernoteClone.notes
+      note.fetch({
+        success: function () {
+          EvernoteClone.notes.add(note);
+          callback(note);
+        }
+      });
+    }
   },
   
   _swapLeftView: function(view) {
@@ -99,9 +98,10 @@ EvernoteClone.Routers.Router = Backbone.Router.extend({
     this.$rightCol._currentView && this.$rightCol._currentView.remove();
     this.$rightCol._currentView = view;
     this.$rightCol.html(view.render().$el);
-  }// ,
-//   
-//   _fullView: function () {
-//     this.$rootEl.append(this.$leftCol).append(this.$midCol).append(this.$rightCol)
-//   }
+  },
+  
+  _fullView: function () {
+    this.$rootEl.html(this.$leftCol);
+    this.$rootEl.append(this.$midCol).append(this.$rightCol);
+  }
 });

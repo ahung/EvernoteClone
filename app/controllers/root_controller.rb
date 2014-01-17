@@ -1,4 +1,5 @@
 class RootController < ApplicationController
+  
   def root
     if logged_in?
       render :root
@@ -15,7 +16,5 @@ class RootController < ApplicationController
   
   def support
   end
-  
-  
   
 end

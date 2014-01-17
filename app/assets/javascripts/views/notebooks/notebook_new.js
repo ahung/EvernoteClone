@@ -17,16 +17,17 @@ EvernoteClone.Views.NewNotebook = Backbone.View.extend({
     var $form = $(event.currentTarget);
     var params = $form.serializeJSON();
     var notebook = new EvernoteClone.Models.Notebook(params["notebook"]);
-    notebook.save(null, {
-      success: function () {
-        EvernoteClone.notebooks.add(notebook);
-        Backbone.history.navigate("#", { trigger: true })
-      },
-      error: function () {
-        
-        // console.log("Failed to Save")
-      }
-    })
+    if (notebook.isValid()) {
+      notebook.save(null, {
+        success: function () {
+          EvernoteClone.notebooks.add(notebook);
+          Backbone.history.navigate("#", { trigger: true })
+        }
+      });
+    } else {
+      //do something with validation error message here
+      console.log(notebook.validationError);
+    }
   }
   
 })
