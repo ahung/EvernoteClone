@@ -4,8 +4,20 @@
 <h3> <%= note.escape("title") %> </h3>
   
 <br>
+<div class="btn-group text-left">
+  <button class="btn btn-default btn-xs dropdown-toggle" type="button" 
+    data-toggle="dropdown"> + Tag <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href=""> Tags </a></li>
+    <li><a href=""> Are </a></li>
+    <li><a href=""> Coming </a></li>
+    <li><a href=""> Soon </a></li>
+  </ul>
+</div>
+<br>
+Current Tags:
 
-<div class="note-body"
+<div class="note-body">
 <h5> <%= note.escape("body") %> </h5>
 
 <br>
