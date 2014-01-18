@@ -4,7 +4,8 @@
     class="btn btn-primary"> + New Note </a>
   </div>
   <div class="col-xs-4">
-    <button class="btn btn-default" id="edit-notebook">Edit Notebook</button>
+    <a href="#/notebooks/<%= notes.notebook.id %>/edit" class="btn btn-default" 
+      id="edit-notebook"> Edit Notebook </a>
   </div>
   <div class="col-xs-4">
     <button class="btn btn-danger" data-toggle="modal" 
@@ -33,7 +34,7 @@
       </div>
       <div class="modal-body">
         <p> Are You Sure You Want To Delete 
-        '<%= notes.notebook.escape("name") %>' and All Notes In It? </p>
+        '<%= notes.notebook.escape("name") %>' and All The Notes In It? </p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">

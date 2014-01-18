@@ -15,15 +15,12 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
   
   deleteNote: function(event) {
     var notebookId = this.model.get("notebook_id");
-    // console.log(notebookId);
     this.model.destroy({
       success: function (model, response, options) {
         Backbone.history.navigate("#/notebooks/" + notebookId + "/notes", 
           {trigger: true});
       }
     });
-    // console.log($(event.target))
-    // console.log("clicking delete")
   }
   
 })
