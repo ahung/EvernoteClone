@@ -6,7 +6,7 @@ class Api::TaggedNotesController < ApplicationController
     if @tagged_note.save
       render :json => @tagged_note
     else
-      flash[:errors] => @tagged_note.errors.full_messages
+      flash[:errors] = @tagged_note.errors.full_messages
     end
   end
 
