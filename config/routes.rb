@@ -4,9 +4,9 @@ EvernoteClone::Application.routes.draw do
   
   namespace :api, :defaults => { :format => :json } do
     resources :notebooks, :except => [:new, :edit] do
-      resources :notes, :only => [:index, :update]
+      resources :notes, :only => [:index]
     end
-    resources :notes, :only => [:show, :create, :destroy]
+    resources :notes, :only => [:show, :create, :destroy, :update]
   end
   
   root :to => "root#root"

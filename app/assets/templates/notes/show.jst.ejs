@@ -1,10 +1,11 @@
 <button type="button" class="btn btn-danger" data-toggle="modal" 
   data-target="#delete-note-modal"> Delete Note </button>
-
-<h3> <%= note.escape("title") %> </h3>
-  
 <br>
-<div class="btn-group text-left">
+<div>
+<h3 class="note" id="title"> <%= note.escape("title") %> </h3>
+</div>
+<br>
+<div class="btn-group">
   <button class="btn btn-default btn-xs dropdown-toggle" type="button" 
     data-toggle="dropdown"> + Tag <span class="caret"></span></button>
   <ul class="dropdown-menu">
@@ -16,10 +17,10 @@
 </div>
 <br>
 Current Tags:
-
-<div class="note-body">
-<h5> <%= note.escape("body") %> </h5>
-
+<br>
+<div>
+<p class="note" id="body"> <%= note.escape("body") %> </p>
+</div>
 <br>
 
 <div class="modal" id="delete-note-modal">

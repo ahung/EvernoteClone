@@ -21,7 +21,7 @@
 <br>
 
 <div class="bs-sidebar">
-  <ul class="nav bs-sidebar">
+  <ul class="nav bs-sidebar nav-pills nav-stacked">
     <% notebooks.each(function(notebook){ %> 
       <li><a href="#" class="notebook" data-id="<%= notebook.id %>">
             <%= notebook.escape("name") %></a></li>

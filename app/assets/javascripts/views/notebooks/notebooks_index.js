@@ -34,6 +34,7 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
           $rightCol: that.$rightCol
         });
         that._swapMidView(notesIndex);
+        // remove right column view if viewing a note when switching notebooks
       }
     });
   },
