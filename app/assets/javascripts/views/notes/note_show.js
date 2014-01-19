@@ -26,7 +26,7 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
   
   editNote: function (event) {
     var id = $(event.currentTarget).attr('id');
-    var $input = $("<input type='text'>");
+    var $input = $("<input type='text' class='form-control'>");
     $input.val($(event.currentTarget).text());
     $input.attr("data-field", id);
     $(event.currentTarget).replaceWith($input);

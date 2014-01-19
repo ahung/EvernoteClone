@@ -1,24 +1,37 @@
 <button type="button" class="btn btn-danger" data-toggle="modal" 
   data-target="#delete-note-modal"> Delete Note </button>
 <br>
-<div>
+<div class="row" id="note-stat">
+  <div class="col-xs-6">
+    Created: <%= new Date(note.get("created_at")) %>
+  </div>
+  <div class="col-xs-6">
+    Last Edited: <%= new Date(note.get("updated_at")) %>
+  </div>
+</div>
+<br>
+<div class="note-tag-area">
+  <div class="btn-group">
+    <button class="btn btn-default btn-xs dropdown-toggle" type="button" 
+      data-toggle="dropdown"> + Tag <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href=""> Tags </a></li>
+      <li><a href=""> Are </a></li>
+      <li><a href=""> Coming </a></li>
+      <li><a href=""> Soon </a></li>
+    </ul>
+  </div>
+  <span class="label label-info">Current Tags:</span>
+  <br>
+</div>
+<br>
+
+<div class="note-title">
 <h3 class="note" id="title"> <%= note.escape("title") %> </h3>
 </div>
 <br>
-<div class="btn-group">
-  <button class="btn btn-default btn-xs dropdown-toggle" type="button" 
-    data-toggle="dropdown"> + Tag <span class="caret"></span></button>
-  <ul class="dropdown-menu">
-    <li><a href=""> Tags </a></li>
-    <li><a href=""> Are </a></li>
-    <li><a href=""> Coming </a></li>
-    <li><a href=""> Soon </a></li>
-  </ul>
-</div>
-<br>
-Current Tags:
-<br>
-<div>
+
+<div class="note-body">
 <p class="note" id="body"> <%= note.escape("body") %> </p>
 </div>
 <br>
