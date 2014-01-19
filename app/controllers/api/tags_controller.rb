@@ -17,7 +17,7 @@ class Api::TagsController < ApplicationController
     if @tag.save
       render :json => @tag
     else
-      flash[:errors] => @tag.errors.full_messages
+      flash[:errors] = @tag.errors.full_messages
     end
   end
 
