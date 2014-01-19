@@ -18,15 +18,15 @@ EvernoteClone.Views.NewNote = Backbone.View.extend({
   
   newNote: function (event) {
     event.preventDefault();
+    var that = this;
     var $form = $(event.currentTarget);
     var params = $form.serializeJSON();
     var note = new EvernoteClone.Models.Note(params["note"]);
     if (note.isValid()) {
       note.save(null, {
         success: function () {   
-          Backbone.history.navigate("#/notebooks/" + note.get("notebook_id") 
-          + "/notes",
-          { trigger: true })
+          EvernoteClone.notes.add(note);
+          that.remove();
         }
       });
     } else {

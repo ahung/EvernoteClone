@@ -1,16 +1,37 @@
-<p><a href="#/notebooks/new" class="btn btn-primary">
-  + New Notebook</a></p>
+<div class="btn-group">
+  <button class="btn btn-primary dropdown-toggle" type="button" 
+    data-toggle="dropdown"> + New Notebook </button>
+  <div class="dropdown-menu">
+    <span class="label label-danger" id="new-error"></span>
+    <form id="create-notebook"> 
+      <div class="form-group">
+        <input type="text" class="form-control" name="notebook[name]" 
+          id="notebook_name" placeholder="Notebook Name">
+      </div>
+      
+      <input type="submit" class="btn btn-primary" 
+        value="Create Notebook">
+    </form>
+  </div>
+</div>
+
 <br>
+
 <b><u>Notebooks</u></b>
 <br>
 
 <div class="bs-sidebar">
   <ul class="nav bs-sidebar">
     <% notebooks.each(function(notebook){ %> 
-      <li><a href="#/notebooks/<%=notebook.id%>/notes">
+      <li><a href="#" class="notebook" data-id="<%= notebook.id %>">
             <%= notebook.escape("name") %></a></li>
     <% }); %>
   </ul>
 </div>
 
-
+<script type="text/javascript">
+  $(".dropdown-toggle").dropdown();
+  $(".dropdown-menu").find('form').click(function (event) {
+    event.stopPropagation();
+  });
+</script>
