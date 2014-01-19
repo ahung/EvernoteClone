@@ -5,4 +5,6 @@ class Note < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :notebook
+  has_many :tagged_notes
+  has_many :tags, :through => :tagged_notes
 end

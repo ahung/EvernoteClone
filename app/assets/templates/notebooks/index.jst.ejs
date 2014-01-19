@@ -1,3 +1,4 @@
+<br>
 <div class="btn-group">
   <button class="btn btn-primary dropdown-toggle" type="button" 
     data-toggle="dropdown"> + New Notebook </button>
@@ -15,7 +16,7 @@
   </div>
 </div>
 
-<br>
+<br><br>
 
 <b><u>Notebooks</u></b>
 <br>
@@ -23,7 +24,7 @@
 <div class="bs-sidebar">
   <ul class="nav bs-sidebar nav-pills nav-stacked">
     <% notebooks.each(function(notebook){ %> 
-      <li><a href="#" class="notebook" data-id="<%= notebook.id %>">
+      <li><a href="#" class="notebook-link" data-id="<%= notebook.id %>">
             <%= notebook.escape("name") %></a></li>
     <% }); %>
   </ul>

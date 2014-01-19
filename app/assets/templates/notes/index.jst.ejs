@@ -1,3 +1,4 @@
+<br>
 <div class="row">
 
   <div class="col-xs-4">
@@ -34,9 +35,9 @@
 
 <br>
 <div class="bs-sidebar">
-  <ul class="nav bs-sidebar">
+  <ul class="nav bs-sidebar nav-pills nav-stacked">
     <% notes.each(function (note) { %>
-      <li><a href="#" class="note" data-id="<%= note.id %>">
+      <li><a href="#" class="note-link" data-id="<%= note.id %>">
         <%= note.escape("title") %></a></li>
     <% }); %>
   </ul>

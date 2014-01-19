@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140115193949) do
+ActiveRecord::Schema.define(:version => 20140119060731) do
 
   create_table "notebooks", :force => true do |t|
     t.string   "name",       :null => false
@@ -31,6 +31,27 @@ ActiveRecord::Schema.define(:version => 20140115193949) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "tagged_notes", :force => true do |t|
+    t.integer  "tag_id",     :null => false
+    t.integer  "note_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tagged_notes", ["note_id"], :name => "index_tagged_notes_on_note_id"
+  add_index "tagged_notes", ["tag_id", "note_id"], :name => "index_tagged_notes_on_tag_id_and_note_id", :unique => true
+  add_index "tagged_notes", ["tag_id"], :name => "index_tagged_notes_on_tag_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name",       :null => false
+    t.integer  "user_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tags", ["name", "user_id"], :name => "index_tags_on_name_and_user_id", :unique => true
+  add_index "tags", ["user_id"], :name => "index_tags_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "username",        :null => false

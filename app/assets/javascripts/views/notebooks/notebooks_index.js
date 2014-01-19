@@ -6,7 +6,7 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
   },
   
   events: {
-    "click .notebook": "renderNotes",
+    "click .notebook-link": "renderNotes",
     "submit #create-notebook": "newNotebook"
   },
 

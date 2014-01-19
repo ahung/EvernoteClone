@@ -47,6 +47,10 @@ html, body {
   overflow: scroll;
 }
 
+.notebook-link, .note-link {
+  border: black thin solid;
+}
+
 #note-stat {
   border-top: black solid;
   border-bottom: black solid;
@@ -57,7 +61,7 @@ html, body {
 }
 
 .note-title {
-  border-bottom: black thin solid;
+
 }
 
 .note-body {

@@ -8,7 +8,7 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
   
   events: {
     "click #delete-notebook": "deleteNotebook",
-    "click .note": "showNote",
+    "click .note-link": "showNote",
     "click #new-note": "newNote",
     "submit #edit-notebook": "editNotebook"
   },

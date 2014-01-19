@@ -1,15 +1,19 @@
+<br>
+
 <button type="button" class="btn btn-danger" data-toggle="modal" 
   data-target="#delete-note-modal"> Delete Note </button>
-<br>
+<br><br>
+
 <div class="row" id="note-stat">
   <div class="col-xs-6">
-    Created: <%= new Date(note.get("created_at")) %>
+    <b>Created:</b> <i><%= new Date(note.get("created_at")) %></i>
   </div>
   <div class="col-xs-6">
-    Last Edited: <%= new Date(note.get("updated_at")) %>
+    <b>Last Edited:</b> <i><%= new Date(note.get("updated_at")) %></i>
   </div>
 </div>
 <br>
+
 <div class="note-tag-area">
   <div class="btn-group">
     <button class="btn btn-default btn-xs dropdown-toggle" type="button" 
@@ -23,16 +27,18 @@
   </div>
   <span class="label label-info">Current Tags:</span>
   <br>
+  <br>
 </div>
 <br>
 
 <div class="note-title">
-<h3 class="note" id="title"> <%= note.escape("title") %> </h3>
+  <h3 class="note" id="title"><%= note.escape("title") %></h3>
 </div>
-<br>
+
+<hr>
 
 <div class="note-body">
-<p class="note" id="body"> <%= note.escape("body") %> </p>
+  <p class="note" id="body"><%= note.escape("body") %></p>
 </div>
 <br>
 
@@ -43,8 +49,8 @@
         <h4> Confirm Note Deletion </h4>
       </div>
       <div class="modal-body">
-        <p> Are You Sure You Want to Delete '<%= note.escape("title") %>' 
-          Forever? </p>
+        <p>Are You Sure You Want to Delete '<%= note.escape("title") %>' 
+          Forever?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">
