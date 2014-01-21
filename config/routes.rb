@@ -7,8 +7,10 @@ EvernoteClone::Application.routes.draw do
       resources :notes, :only => [:index]
     end
     resources :notes, :only => [:show, :create, :destroy, :update]
-    resources :tags, :except => [:new, :edit]
-    resources :tagged_notes, :only => [:create, :destroy]
+    resources :tags, :except => [:new, :edit] do
+      resources :tagged_notes, :only => [:index]
+    end
+    resources :tagged_notes, :only => [:show, :create, :destroy]
   end
   
   root :to => "root#root"

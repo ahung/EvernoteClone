@@ -3,7 +3,8 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
   initialize: function (options) {
     this.$rightCol = options.$rightCol;
     this.listenTo(this.collection.notebook, "change:name", this.render);
-    this.listenTo(this.collection, "add change:title remove reset", this.render);
+    this.listenTo(this.collection, "add change:title sort remove reset", 
+      this.render);
   },
   
   events: {
@@ -36,10 +37,20 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
   },
   
   showNote: function (event) {
+    var that = this;
+    $(".note-link").removeClass('active');
+    $(event.currentTarget).addClass('active');
     var id = $(event.currentTarget).data('id');
     var note = this.collection.get(id);
-    var showNote = new EvernoteClone.Views.ShowNote({ model: note });
-    this._swapRightView(showNote);
+    note.fetch({
+      success: function () {
+        var showNote = new EvernoteClone.Views.ShowNote({ 
+          model: note,
+          collection: that.collection
+         });
+        that._swapRightView(showNote);
+      }
+    })
   },
   
   newNote: function (event) {
@@ -64,13 +75,13 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
   },
   
   _swapRightView: function (view) {
-    this._currentView && this._currentView.remove();
-    this._currentView = view;
+    EvernoteClone._currentRightView && EvernoteClone._currentRightView.remove();
+    EvernoteClone._currentRightView = view;
     this.$rightCol.html(view.render().$el);
   },
   
   _removeRightView: function() {
-    this._currentView && this._currentView.remove();
+    EvernoteClone._currentRightView && EvernoteClone._currentRightView.remove();
   }
 
 });

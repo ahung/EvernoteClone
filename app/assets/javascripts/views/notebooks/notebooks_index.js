@@ -2,7 +2,8 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
   initialize: function (options) {
     this.$midCol = options.$midCol;
     this.$rightCol = options.$rightCol;
-    this.listenTo(this.collection, "add change:name remove reset", this.render);
+    this.listenTo(this.collection, "add change:name sort remove reset", 
+      this.render);
   },
   
   events: {
@@ -14,7 +15,7 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
   
   render: function() {
     var renderedContent = this.template({
-      notebooks: this.collection
+      notebooks: this.collection,
     });
     this.$el.html(renderedContent);
     return this;
@@ -22,6 +23,9 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
   
   renderNotes: function (event) {
     var that = this;
+    $(".notebook-link").removeClass('active');
+    $(".tag-link").removeClass('active');
+    $(event.currentTarget).addClass('active');
     var id = $(event.currentTarget).data('id');
     var notebook = this.collection.get(id);
     EvernoteClone.notes = new EvernoteClone.Collections.Notes([], {
@@ -34,14 +38,13 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
           $rightCol: that.$rightCol
         });
         that._swapMidView(notesIndex);
-        // remove right column view if viewing a note when switching notebooks
+        that._removeRightView();
       }
     });
   },
   
   newNotebook: function(event) {
     event.preventDefault();
-    var that = this;
     var $form = $(event.currentTarget);
     var params = $form.serializeJSON();
     var notebook = new EvernoteClone.Models.Notebook(params["notebook"]);
@@ -52,7 +55,7 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
         }
       });
     } else {
-      $('#new-error').text(notebook.validationError);
+      $('#notebook-error').text(notebook.validationError);
     }
   },
   
@@ -60,6 +63,10 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$midCol.html(view.render().$el);
+  },
+  
+  _removeRightView: function () {
+    EvernoteClone._currentRightView && EvernoteClone._currentRightView.remove();
   }
 
 });

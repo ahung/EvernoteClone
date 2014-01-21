@@ -8,12 +8,12 @@ class Api::TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
-    @notes = @tag.notes
-    render :json => @notes
+    render :json => @tag
   end
 
   def create
     @tag = Tag.new(params[:tag])
+    @tag.user_id = current_user.id
     if @tag.save
       render :json => @tag
     else

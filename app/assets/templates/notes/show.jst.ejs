@@ -18,27 +18,33 @@
   <div class="btn-group">
     <button class="btn btn-default btn-xs dropdown-toggle" type="button" 
       data-toggle="dropdown"> + Tag <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href=""> Tags </a></li>
-      <li><a href=""> Are </a></li>
-      <li><a href=""> Coming </a></li>
-      <li><a href=""> Soon </a></li>
+    <ul class="dropdown-menu btn-xs">
+      <% tags.each(function(tag) { %> 
+        <% if (note.get('tags').indexOf(tag) != -1) { %>
+        <li><a href="#" class="btn btn-xs add-tag" data-id="<%= tag.id %>">
+          <%= tag.escape('name')%></a></li>
+          <% } %>
+      <% }); %> 
     </ul>
   </div>
-  <span class="label label-info">Current Tags:</span>
+  <span class="label label-primary">Current Tags:</span>
+  <% note.get('tags').each(function(tag) { %>
+    <div class="btn-group">
+      <button class="btn btn-info btn-xs"><%= tag.escape('name') %></button>
+      <button type="button" class="btn btn-info btn-xs remove-tag" 
+        data-id="<%= tag.id %>">&times;</button>
+    </div>
+  <% }); %>
   <br>
   <br>
 </div>
 <br>
 
-<div class="note-title">
-  <h3 class="note" id="title"><%= note.escape("title") %></h3>
-</div>
-
+<div class="note">
+  <h3 class="note-title" id="title"><%= note.escape("title") %></h3>
 <hr>
-
-<div class="note-body">
-  <p class="note" id="body"><%= note.escape("body") %></p>
+  <p class="note-body" 
+    id="body"><%= note.escape("body").replace(/\n/g,"\n<br>") %></p>
 </div>
 <br>
 

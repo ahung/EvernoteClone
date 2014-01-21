@@ -4,7 +4,7 @@ EvernoteClone.Collections.Notes = Backbone.Collection.extend({
   },
   
   url: function () {
-    return "/api/notebooks/" + this.notebook.id + "/notes"
+      return "/api/notebooks/" + this.notebook.id + "/notes"
   },
 
   model: EvernoteClone.Models.Note,

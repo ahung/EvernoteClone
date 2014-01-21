@@ -51,6 +51,24 @@ html, body {
   border: black thin solid;
 }
 
+.active {
+  background-color: lightgray;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#tag_name {
+  width: 50%;
+}
+
+#tag-list {
+  width: 75%;
+}
+
+#tag_name {
+  width: 75%;
+}
+
 #note-stat {
   border-top: black solid;
   border-bottom: black solid;

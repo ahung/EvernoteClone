@@ -1,0 +1,43 @@
+<br>
+<div class="btn-group">
+    <span class="label label-danger" id="tag-error"></span>
+    <form class="form-inline" id="create-tag"> 
+        <input type="submit" class="btn btn-default btn-sm" value="+">
+        <input type="text" class="form-control input-sm" name="tag[name]" 
+          id="tag_name" placeholder="New Tag">
+    </form>
+</div>
+
+<br><br>
+
+<b><u>Tags</u></b>
+<br>
+
+<% tags.each(function(tag){ %> 
+  <div class="btn-group" id="tag-list">
+    <button type="button" class="btn btn-info tag-link" data-id="<%= tag.id %>">
+      <%= tag.escape("name")%></button>
+    <button type="button" class="btn btn-info dropdown-toggle" 
+      data-toggle="dropdown"><span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><form id="rename-tag" data-id="<%= tag.id %>"> 
+        <div class="form-group">
+          <input type="submit" value="Rename Tag">
+          <input type="text" class="form-control btn btn-default" name="tag[name]" 
+            id="tag_name" placeholder="<%= tag.escape('name')%>">
+        </div>
+      </form></li>
+      <li class="divider"></li>
+      <li class="divider"></li>
+      <li><a href="#" class="delete-tag btn btn-danger" 
+        data-id="<%= tag.id %>">Delete Tag</a></li>
+    </ul>
+  </div>
+<% }); %>
+
+<script type="text/javascript">
+  $(".dropdown-toggle").dropdown();
+  $(".dropdown-menu").find('form').click(function (event) {
+    event.stopPropagation();
+  });
+</script>
