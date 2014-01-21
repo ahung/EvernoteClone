@@ -20,21 +20,19 @@
       data-toggle="dropdown"> + Tag <span class="caret"></span></button>
     <ul class="dropdown-menu btn-xs">
       <% tags.each(function(tag) { %> 
-        <% if (note.get('tags').indexOf(tag) != -1) { %>
         <li><a href="#" class="btn btn-xs add-tag" data-id="<%= tag.id %>">
           <%= tag.escape('name')%></a></li>
-          <% } %>
       <% }); %> 
     </ul>
   </div>
   <span class="label label-primary">Current Tags:</span>
-  <% note.get('tags').each(function(tag) { %>
-    <div class="btn-group">
-      <button class="btn btn-info btn-xs"><%= tag.escape('name') %></button>
-      <button type="button" class="btn btn-info btn-xs remove-tag" 
-        data-id="<%= tag.id %>">&times;</button>
-    </div>
-  <% }); %>
+    <% noteTags.each(function(noteTag) { %>
+      <div class="btn-group">
+        <button class="btn btn-info btn-xs"><%= noteTag.escape('name') %></button>
+        <button type="button" class="btn btn-info btn-xs remove-tag" 
+          data-id="<%= noteTag.id %>">&times;</button>
+      </div>
+    <% }); %>
   <br>
   <br>
 </div>

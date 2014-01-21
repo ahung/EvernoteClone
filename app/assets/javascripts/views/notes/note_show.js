@@ -1,6 +1,6 @@
 EvernoteClone.Views.ShowNote = Backbone.View.extend({
-  initialize: function () {
-    this.listenTo(this.model.get('tags'), "all", this.render)
+  initialize: function (options) {
+    this.listenTo(this.collection, "add remove", this.render)
   },
   
   events: {
@@ -18,9 +18,9 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
   render: function () {
     var renderedContent = this.template({
       note: this.model,
-      tags: EvernoteClone.tags
+      tags: EvernoteClone.tags,
+      noteTags: EvernoteClone.noteTags
     });
-    console.log(this.model.get('tags'))
     this.$el.html(renderedContent);
     return this;
   },
@@ -50,7 +50,7 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
     this.model.set(attrName, value);
     this.model.save(null, {
       success: function () {
-        that.collection.sort();
+        EvernoteClone.notes.sort();
         that.render();
       }
     });
@@ -82,34 +82,27 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
     var that = this;
     var tagId = $(event.currentTarget).data("id");
     var tag = EvernoteClone.tags.get(tagId);
-    console.log(tag)
-    var taggedNote = new EvernoteClone.Models.TaggedNote({
+    var noteTag = new EvernoteClone.Models.TaggedNote({
       tag_id: tagId,
+      name: tag.get('name'),
       note_id: this.model.id
     });
-    console.log(this.model.tags)
-    taggedNote.save({
+    noteTag.save(null, { 
       success: function () {
-        that.model.get('tags').create({id: tagId})
+        EvernoteClone.noteTags.add(noteTag);
       }
     });
+    // this.collection.create({
+    //   tag_id: tagId, 
+    //   name: tag.get('name'), 
+    //   note_id: this.model.id
+    // });
   },
   
   removeTag: function (event) {
-    console.log("removing tag");
-    var tagId = $(event.currentTarget).data("id");
-    var taggedNote = new EvernoteClone.Models.TaggedNote({
-      tag_id: tagId,
-      note_id: this.model.id
-    });
-    console.log(taggedNote);
-    taggedNote.fetch({
-      success: function () {
-        console.log(taggedNote);
-        taggedNote.destroy();
-      }
-    });
-    
+    var id = $(event.currentTarget).data("id");
+    var noteTag = EvernoteClone.noteTags.get(id)
+    noteTag.destroy();
   }
   
 })

@@ -8,7 +8,7 @@ class Api::TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
-    render :json => @tag
+    render :json => @tag.as_json(:include => :notes)
   end
 
   def create

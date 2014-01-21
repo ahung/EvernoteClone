@@ -6,10 +6,10 @@ EvernoteClone::Application.routes.draw do
     resources :notebooks, :except => [:new, :edit] do
       resources :notes, :only => [:index]
     end
-    resources :notes, :only => [:show, :create, :destroy, :update]
-    resources :tags, :except => [:new, :edit] do
+    resources :notes, :only => [:show, :create, :destroy, :update] do
       resources :tagged_notes, :only => [:index]
     end
+    resources :tags, :except => [:new, :edit]
     resources :tagged_notes, :only => [:show, :create, :destroy]
   end
   

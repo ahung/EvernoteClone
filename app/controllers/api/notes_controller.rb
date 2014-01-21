@@ -19,13 +19,13 @@ class Api::NotesController < ApplicationController
   
   def show
     @note = Note.find(params[:id])
-    render :json => @note.as_json(:include => :tags)
+    render :json => @note# .as_json(:include => :tags)
   end
 
   def update
     @note = Note.find(params[:id])
     if @note.update_attributes(params[:note])
-      render :json => @note.as_json(:include => :tags)
+      render :json => @note# .as_json(:include => :tags)
     else
       render :json => @note.errors
     end

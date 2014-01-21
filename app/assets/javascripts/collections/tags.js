@@ -5,13 +5,5 @@ EvernoteClone.Collections.Tags = Backbone.Collection.extend({
   
   comparator: function (tag) {
     return tag.get('name');
-  }// ,
-//   
-//   toJSON: function () {
-//     var data = _.clone(this.attributes);
-//     console.log(this.attributes)
-//     data.tags = this.get('tags').toJSON();
-//     return data;
-//   }
-//   
+  }
 })

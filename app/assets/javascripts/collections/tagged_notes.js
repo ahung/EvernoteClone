@@ -1,12 +1,12 @@
 EvernoteClone.Collections.TaggedNotes = Backbone.Collection.extend({
   initialize: function (options) {
-    this.tag = options.tag
+    this.note = options.note;
   },
   
-  model: EvernoteClone.Models.Note,
+  model: EvernoteClone.Models.TaggedNote,
   
   url: function () {
-    return "/api/tags/" + this.tag.id + "/tagged_notes"
+    return "/api/notes/" + this.note.id + "/tagged_notes"
   },
   
   comparator: function (taggedNote) {
