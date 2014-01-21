@@ -48,8 +48,9 @@ EvernoteClone.Views.TagsIndex = Backbone.View.extend({
     var tag = this.collection.get(id);
     tag.fetch({
       success: function () {
+        EvernoteClone.taggedNotes = tag.get('notes');
         var showTag = new EvernoteClone.Views.ShowTag({
-          collection: tag.get('notes'),
+          collection: EvernoteClone.taggedNotes,
           model: tag,
           $rightCol: that.$rightCol
         });

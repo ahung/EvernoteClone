@@ -50,7 +50,11 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
     this.model.set(attrName, value);
     this.model.save(null, {
       success: function () {
-        EvernoteClone.notes.sort();
+        if (EvernoteClone.notes) {
+          EvernoteClone.notes.sort();
+        } else {
+          EvernoteClone.taggedNotes.sort();
+        }
         that.render();
       }
     });
@@ -92,11 +96,6 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
         EvernoteClone.noteTags.add(noteTag);
       }
     });
-    // this.collection.create({
-    //   tag_id: tagId, 
-    //   name: tag.get('name'), 
-    //   note_id: this.model.id
-    // });
   },
   
   removeTag: function (event) {
