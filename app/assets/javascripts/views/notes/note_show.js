@@ -1,7 +1,7 @@
 EvernoteClone.Views.ShowNote = Backbone.View.extend({
   initialize: function (options) {
-    this.listenTo(this.collection, "add remove", this.render)
-    this.listenTo(EvernoteClone.tags, "add remove sort change:name", this.render)
+    this.listenTo(EvernoteClone.tags, "add remove sort change:name", this.render);
+    this.listenTo(EvernoteClone.currentTags, "add remove", this.render)
   },
   
   events: {
@@ -17,10 +17,11 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
   template: JST['notes/show'],
   
   render: function () {
+    console.log(EvernoteClone.currentTags)
     var renderedContent = this.template({
       note: this.model,
       tags: EvernoteClone.tags,
-      noteTags: EvernoteClone.noteTags
+      currentTags: EvernoteClone.currentTags
     });
     this.$el.html(renderedContent);
     return this;
@@ -86,22 +87,28 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
     event.preventDefault();
     var that = this;
     var tagId = $(event.currentTarget).data("id");
-    var tag = EvernoteClone.tags.get(tagId);
+    var currentTag = EvernoteClone.tags.get(tagId);
     var noteTag = new EvernoteClone.Models.TaggedNote({
       tag_id: tagId,
-      name: tag.get('name'),
       note_id: this.model.id
     });
     noteTag.save(null, { 
       success: function () {
         EvernoteClone.noteTags.add(noteTag);
+        EvernoteClone.currentTags.add(currentTag);
       }
     });
   },
   
   removeTag: function (event) {
     var id = $(event.currentTarget).data("id");
-    var noteTag = EvernoteClone.noteTags.get(id)
-    noteTag.destroy();
+    var currentTag = EvernoteClone.currentTags.get(id)
+    var noteTag = EvernoteClone.noteTags.findWhere({tag_id: id});
+    noteTag.destroy({
+      success: function () {
+        EvernoteClone.currentTags.remove(currentTag);
+      }
+    });
+    
   }
 })

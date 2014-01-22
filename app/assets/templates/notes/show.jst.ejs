@@ -26,11 +26,11 @@
     </ul>
   </div>
   <span class="label label-primary">Current Tags:</span>
-    <% noteTags.each(function(noteTag) { %>
+    <% currentTags.each(function(currentTag) { %>
       <div class="btn-group">
-        <button class="btn btn-info btn-xs"><%= noteTag.escape('name') %></button>
+        <button class="btn btn-info btn-xs"><%= currentTag.escape('name') %></button>
         <button type="button" class="btn btn-info btn-xs remove-tag" 
-          data-id="<%= noteTag.id %>">&times;</button>
+          data-id="<%= currentTag.id %>">&times;</button>
       </div>
     <% }); %>
   <br>

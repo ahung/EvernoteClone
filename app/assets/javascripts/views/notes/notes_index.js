@@ -41,11 +41,15 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
     $(event.currentTarget).addClass('active');
     var id = $(event.currentTarget).data('id');
     var note = this.collection.get(id);
+    note.fetch();
+    console.log(note);
+    console.log(note.get('tags'))
     EvernoteClone.noteTags = new EvernoteClone.Collections.TaggedNotes({
       note: note
     });
     EvernoteClone.noteTags.fetch({
       success: function () {
+        EvernoteClone.currentTags = note.get('tags');
         var showNote = new EvernoteClone.Views.ShowNote({ 
           model: note,
           collection: EvernoteClone.noteTags

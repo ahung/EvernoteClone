@@ -3,18 +3,9 @@ class Api::TaggedNotesController < ApplicationController
   
   def index
     @tagged_notes = TaggedNote.where(:note_id => params[:note_id])
-    # @tag = Tag.find(params[:tag_id])
-#     @tagged_notes = @tag.notes
-    render :json => @tagged_notes# .as_json(:include => :tag)
+    render :json => @tagged_notes
   end
-  # 
-  # def show
-  #   @tagged_note = TaggedNote.find_by_tag_id_and_note_id(
-  #     params[:tagged_note][:tag_id],
-  #     params[:tagged_note][:note_id])
-  #   render :json => @tagged_note
-  # end
-  
+
   def create
     @tagged_note = TaggedNote.new(params[:tagged_note])
     if @tagged_note.save
