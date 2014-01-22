@@ -6,17 +6,12 @@ class UsersController < ApplicationController
 
     if @user.save
       self.current_user = @user
-      flash[:notices] = ["Account Created!"]
+      flash[:notices] = ["Account Created! Welcome!"]
       redirect_to root_url
     else
       flash[:errors] = @user.errors.full_messages
       redirect_to root_url
     end
-  end
-  
-  def show
-    @user = current_user
-    render :json => @user
   end
 
 end

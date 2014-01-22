@@ -20,6 +20,9 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
       notes: this.collection
     });
     this.$el.html(renderedContent);
+    $(this.$el.find(".drag-note")).draggable({
+      revert: "invalid"
+    });
     return this;
   },
   
@@ -41,9 +44,12 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
     $(event.currentTarget).addClass('active');
     var id = $(event.currentTarget).data('id');
     var note = this.collection.get(id);
+    this.renderNote(note);
+  },
+  
+  renderNote: function (note) {
+    var that = this;
     note.fetch();
-    console.log(note);
-    console.log(note.get('tags'))
     EvernoteClone.noteTags = new EvernoteClone.Collections.TaggedNotes({
       note: note
     });
@@ -60,10 +66,17 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
   },
   
   newNote: function (event) {
-    var newNote = new EvernoteClone.Views.NewNote({ 
-      notebook: this.collection.notebook
+    var that = this;
+    var newNote = new EvernoteClone.Models.Note({
+      title: "Untitled",
+      notebook_id: this.collection.notebook.id
     });
-    this._swapRightView(newNote);
+    newNote.save(null, {
+      success: function () {
+        EvernoteClone.notes.add(newNote);
+        that.renderNote(newNote);
+      }
+    });
   },
   
   editNotebook: function(event) {

@@ -18,6 +18,24 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
       notebooks: this.collection,
     });
     this.$el.html(renderedContent);
+    $(this.$el.find(".drop-note")).droppable({
+      accept: ".drag-note",
+      hoverClass: "ui-state-hover",
+      drop: function (event, ui) {
+        var notebookId = $(event.target).data('id');
+        var noteId = $(ui.draggable.context).data('id');
+        var note = EvernoteClone.notes.get(noteId);
+        if (note.get('notebook_id') != notebookId) {
+          note.save({notebook_id: notebookId}, {
+            success: function () {
+              EvernoteClone.notes.remove(note)
+            }
+          });
+        } else {
+          EvernoteClone.notes.sort();
+        }
+      }
+    });
     return this;
   },
   
@@ -39,15 +57,6 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
         });
         that._swapMidView(notesIndex);
         that._removeRightView();
-        $(".drag-note").draggable({
-          revert: true,
-          drag: function() {
-            console.log("dragging");
-          },
-          stop: function() {
-            console.log("dropped");
-          }
-        });
       }
     });
   },

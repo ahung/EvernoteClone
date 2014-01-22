@@ -1,7 +1,8 @@
 EvernoteClone.Views.ShowNote = Backbone.View.extend({
   initialize: function (options) {
-    this.listenTo(EvernoteClone.tags, "add remove sort change:name", this.render);
-    this.listenTo(EvernoteClone.currentTags, "add remove", this.render)
+    this.listenTo(EvernoteClone.tags, "add remove sort change:name", 
+      this.render);
+    this.listenTo(EvernoteClone.currentTags, "add remove", this.render);
   },
   
   events: {
@@ -17,7 +18,6 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
   template: JST['notes/show'],
   
   render: function () {
-    console.log(EvernoteClone.currentTags)
     var renderedContent = this.template({
       note: this.model,
       tags: EvernoteClone.tags,
@@ -49,17 +49,22 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
     var that = this;
     var attrName = $(event.currentTarget).data("field");
     var value = $(event.currentTarget).val();
-    this.model.set(attrName, value);
-    this.model.save(null, {
-      success: function () {
-        if (EvernoteClone.notes) {
-          EvernoteClone.notes.sort();
-        } else {
-          EvernoteClone.taggedNotes.sort();
+    if (value != "") {
+      this.model.set(attrName, value);
+      this.model.save(null, {
+        success: function () {
+          if (EvernoteClone.notes) {
+            EvernoteClone.notes.sort();
+          } else {
+            EvernoteClone.taggedNotes.sort();
+          }
+          that.render();
         }
-        that.render();
-      }
-    });
+      });
+    } else {
+      this.render();
+    }
+    
   },
   
   editNoteBody: function (event) {

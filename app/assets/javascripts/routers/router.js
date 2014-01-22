@@ -27,15 +27,6 @@ EvernoteClone.Routers.Router = Backbone.Router.extend({
           $rightCol: that.$rightCol
         });
         that._swapLeftView(notebooksIndex, tagsIndex);
-        $(".drop-note").droppable({
-          accept: ".drag-note",
-          activeClass: "ui-state-highlight",
-          drop: function (event, ui) {
-            console.log(event.target);
-            console.log(ui.draggable);
-            console.log("dropped the note on a notebook");
-          }
-        });
       }
     });
   },

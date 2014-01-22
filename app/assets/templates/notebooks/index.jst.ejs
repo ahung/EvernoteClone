@@ -24,7 +24,8 @@
 <div class="bs-sidebar">
   <ul class="nav bs-sidebar nav-pills nav-stacked">
     <% notebooks.each(function(notebook){ %> 
-      <li class="drop-note"><a href="#" class="notebook-link" data-id="<%= notebook.id %>">
+      <li class="drop-note" data-id="<%= notebook.id %>">
+      <a href="#" class="notebook-link" data-id="<%= notebook.id %>">
             <%= notebook.escape("name") %></a></li>
     <% }); %>
   </ul>

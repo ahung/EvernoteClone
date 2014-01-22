@@ -1,6 +1,6 @@
 EvernoteClone::Application.routes.draw do
-  resource :session, :only => [:create, :destroy, :new]
-  resources :users, :only => [:create, :show]
+  resource :session, :only => [:create, :destroy]
+  resources :users, :only => [:create]
   
   namespace :api, :defaults => { :format => :json } do
     resources :notebooks, :except => [:new, :edit] do

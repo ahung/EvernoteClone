@@ -37,7 +37,8 @@
 <div class="bs-sidebar">
   <ul class="nav bs-sidebar nav-pills nav-stacked">
     <% notes.each(function (note) { %>
-      <li class="drag-note"><a href="#" class="note-link" data-id="<%= note.id %>">
+      <li class="drag-note" data-id="<%= note.id %>">
+        <a href="#" class="note-link" data-id="<%= note.id %>">
         <%= note.escape("title") %></a></li>
     <% }); %>
   </ul>

@@ -76,7 +76,11 @@ html, body {
 }
 
 .note-tag-area {
-  border-bottom: black thin dashed;
+
+}
+
+.note {
+  border: black thin solid;
 }
 
 .note-title {
@@ -84,7 +88,8 @@ html, body {
 }
 
 .note-body {
-  
+  width: 800px;
+  height: 300px;
 }
 
 .selector {
