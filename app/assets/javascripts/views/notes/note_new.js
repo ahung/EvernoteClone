@@ -34,5 +34,4 @@ EvernoteClone.Views.NewNote = Backbone.View.extend({
       console.log(note.validationError)
     }
   }
-  
 })

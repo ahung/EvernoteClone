@@ -95,5 +95,4 @@ EvernoteClone.Views.TagsIndex = Backbone.View.extend({
   _removeRightView: function () {
     EvernoteClone._currentRightView && EvernoteClone._currentRightView.remove();
   }
-  
 })

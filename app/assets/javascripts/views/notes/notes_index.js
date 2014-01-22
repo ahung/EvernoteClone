@@ -1,5 +1,4 @@
 EvernoteClone.Views.NotesIndex = Backbone.View.extend({
-  
   initialize: function (options) {
     this.$rightCol = options.$rightCol;
     this.listenTo(this.collection.notebook, "change:name", this.render);
@@ -86,5 +85,4 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
   _removeRightView: function() {
     EvernoteClone._currentRightView && EvernoteClone._currentRightView.remove();
   }
-
 });

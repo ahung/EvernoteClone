@@ -39,6 +39,15 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
         });
         that._swapMidView(notesIndex);
         that._removeRightView();
+        $(".drag-note").draggable({
+          revert: true,
+          drag: function() {
+            console.log("dragging");
+          },
+          stop: function() {
+            console.log("dropped");
+          }
+        });
       }
     });
   },
@@ -68,5 +77,4 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
   _removeRightView: function () {
     EvernoteClone._currentRightView && EvernoteClone._currentRightView.remove();
   }
-
 });

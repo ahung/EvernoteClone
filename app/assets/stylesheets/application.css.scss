@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require jquery.ui.all
  *= require_tree .
  */
 
@@ -17,7 +18,7 @@
 html, body {
   height: 100%;
   width: 100%;
-  overflow: hidden;
+//  overflow: hidden;
 }
 
 .container {
@@ -32,19 +33,19 @@ html, body {
 #left-column {
   border: black solid;
   height: 100%;
-  overflow: scroll;
+//  overflow: scroll;
 }
 
 #middle-column {
   border: black solid;
   height: 100%;
-  overflow: scroll;
+//  overflow: scroll;
 }
 
 #right-column {
   border: black solid;
   height: 100%;
-  overflow: scroll;
+//  overflow: scroll;
 }
 
 .notebook-link, .note-link {
@@ -84,4 +85,8 @@ html, body {
 
 .note-body {
   
+}
+
+.selector {
+
 }

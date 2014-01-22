@@ -1,7 +1,9 @@
 EvernoteClone.Views.ShowTag = Backbone.View.extend({
   initialize: function (options) {
     this.$rightCol = options.$rightCol;
-    this.listenTo(this.collection, "add change:title sort reset remove", this.render);
+    this.listenTo(this.model, "change:name", this.render)
+    this.listenTo(this.collection, "add change:title sort reset remove", 
+      this.render);
   },
   
   events: {
@@ -41,5 +43,4 @@ EvernoteClone.Views.ShowTag = Backbone.View.extend({
     EvernoteClone._currentRightView = view;
     this.$rightCol.html(view.render().$el);
   }
-  
 })

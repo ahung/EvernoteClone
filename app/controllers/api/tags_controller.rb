@@ -26,7 +26,7 @@ class Api::TagsController < ApplicationController
     if @tag.update_attributes(params[:tag])
       render :json => @tag
     else
-      render :json => @notebook.errors
+      render :json => @tag.errors
     end
   end
 

@@ -1,6 +1,7 @@
 EvernoteClone.Views.ShowNote = Backbone.View.extend({
   initialize: function (options) {
     this.listenTo(this.collection, "add remove", this.render)
+    this.listenTo(EvernoteClone.tags, "add remove sort change:name", this.render)
   },
   
   events: {
@@ -103,5 +104,4 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
     var noteTag = EvernoteClone.noteTags.get(id)
     noteTag.destroy();
   }
-  
 })

@@ -14,5 +14,4 @@ EvernoteClone.Collections.Notes = Backbone.Collection.extend({
   comparator: function(note) {
     return note.get("title");
   }
-
 });

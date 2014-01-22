@@ -11,14 +11,5 @@ EvernoteClone.Models.Tag = Backbone.Model.extend({
     }
   },
   
-  urlRoot: "/api/tags"// ,
-//   
-//   toJSON: function () {
-//     var json = Backbone.Model.prototype.toJSON.call(this);
-//     console.log(json);
-//     delete json.created_at;
-//     delete json.updated_at;
-//     return json;
-//   }
-//   
+  urlRoot: "/api/tags"
 })
