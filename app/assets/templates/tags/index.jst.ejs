@@ -20,13 +20,14 @@
     <button type="button" class="btn btn-info dropdown-toggle" 
       data-toggle="dropdown"><span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <li><form id="rename-tag" data-id="<%= tag.id %>"> 
-        <div class="form-group">
-          <input type="submit" value="Rename Tag">
-          <input type="text" class="form-control btn btn-default" name="tag[name]" 
-            id="tag_name" placeholder="<%= tag.escape('name')%>">
-        </div>
-      </form></li>
+      <li><span class="label label-danger" id="tag-rename-error"></span>
+        <form id="rename-tag" data-id="<%= tag.id %>"> 
+          <div class="form-group">
+            <input type="submit" value="Rename Tag">
+            <input type="text" class="form-control btn btn-default" name="tag[name]" 
+              id="tag_name" placeholder="<%= tag.escape('name')%>">
+          </div>
+        </form></li>
       <li class="divider"></li>
       <li class="divider"></li>
       <li><a href="#" class="delete-tag btn btn-danger" 

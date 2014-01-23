@@ -14,10 +14,14 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
   template: JST['notebooks/index'],
   
   render: function() {
+    var activeId = $(this.$el.find('.active')).data('id')
     var renderedContent = this.template({
       notebooks: this.collection,
     });
     this.$el.html(renderedContent);
+    if (activeId) {
+      $('a[data-id=' + activeId + ']').addClass('active');
+    }
     $(this.$el.find(".drop-note")).droppable({
       accept: ".drag-note",
       hoverClass: "ui-state-hover",

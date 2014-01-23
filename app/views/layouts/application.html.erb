@@ -8,89 +8,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>  
-  <nav class="navbar navbar-default">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse"
-        data-target="#main-nav">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/"><span 
-        class="glyphicon glyphicon-home"> Clevernote</a>
-    </div>
-    <div class="collapse navbar-collapse" id="main-nav">
-      <ul class="nav navbar-nav navbar-left">
-        <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="/support">Support</a></li>
-      </ul>
-
-      <% if logged_in? %>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span 
-        class="glyphicon glyphicon-user"> <%= current_user.username %> <b
-          class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Settings</a></li>
-            <li class="divider"></li>
-            <li><%= link_to "Log Out", session_url, :method => :delete %></li>
-          </ul>
-        </li>
-      </ul>
-      <% else %>
-      <ul class="nav navbar-nav navbar-right">
-        <li><form class="navbar-form" action="/session" method="POST">
-          
-          <div class="form-group">
-            <input type="text" name="user[username]" id="user_username"
-              placeholder="Username">
-            <input type="password" name="user[password]" id="user_password"
-              placeholder="Password">
-          </div>
-          <input type="submit" class="btn btn-primary" value="Log In">
-        </form></li>
-        <li><a href="" data-toggle="modal" data-target="#sign-up-modal"> 
-            Sign Up</a></li>
-      </ul>
-      <% end %>
-    </div>
-  </nav>
-  
-  <% if flash[:errors] %>
-    <div class="row">
-      <div class="col-xs-4 col-xs-offset-4">
-        <div class="alert alert-danger alert-dismissable text-center">
-          <button type="button" class="close" data-dismiss="alert"
-             aria-hidden="true">&times;</button>
-          <% flash[:errors].each do |message| %>
-            <li> <%= message %> </li>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-  
-  <% if flash[:notices] %>
-    <div class="row">
-      <div class="col-xs-4 col-xs-offset-4">
-        <div class="alert alert-success alert-dismissable">
-          <button type="button" class="close" data-dismiss="alert"
-             aria-hidden="true">&times;</button>
-            <% flash[:notices].each do |message| %>
-              <li> <%= message %> </li>
-            <% end %>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  <%= render "navbar" %>
   
   <div class="container">
     <%= yield %>
   </div>
 
-<%= render "/users/form" %>
-
+  <%= render "/users/form" %>
 </body>
 </html>

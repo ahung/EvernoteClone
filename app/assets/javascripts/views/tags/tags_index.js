@@ -16,10 +16,14 @@ EvernoteClone.Views.TagsIndex = Backbone.View.extend({
   template: JST['tags/index'],
   
   render: function () {
+    var activeId = $(this.$el.find('.active')).data('id')
     var renderedContent = this.template({
       tags: this.collection
     });
     this.$el.html(renderedContent);
+    if (activeId) {
+      $(this.$el.find('button[data-id=' + activeId + ']')).addClass('active');
+    }
     return this;
   },
   
@@ -28,14 +32,18 @@ EvernoteClone.Views.TagsIndex = Backbone.View.extend({
     var $form = $(event.currentTarget);
     var params = $form.serializeJSON();
     var tag = new EvernoteClone.Models.Tag(params["tag"]);
-    if (tag.isValid()) {
-      tag.save(null, {
-        success: function () {
-          EvernoteClone.tags.add(tag);
-        }
-      });
+    if (this._tagNameAvail(tag.get('name'))) {
+      if (tag.isValid()) {
+        tag.save(null, {
+          success: function () {
+            EvernoteClone.tags.add(tag);
+          }
+        });
+      } else {
+        $('#tag-error').text(tag.validationError);
+      }
     } else {
-      $('#tag-error').text(tag.validationError);
+      $('#tag-error').text("Tag Name Already Exists")  
     }
   },
   
@@ -65,12 +73,16 @@ EvernoteClone.Views.TagsIndex = Backbone.View.extend({
     var id = $(event.currentTarget).data('id');
     var $form = $(event.currentTarget);
     var params = $form.serializeJSON();
-    var tag = EvernoteClone.tags.get(id);
-    tag.save(params['tag'], {
-      success: function () {
-       EvernoteClone.tags.sort(); 
-      }
-    });
+    if (this._tagNameAvail(params['tag'].name)) {
+      var tag = EvernoteClone.tags.get(id);
+      tag.save(params['tag'], {
+        success: function () {
+         EvernoteClone.tags.sort(); 
+        }
+      });
+    } else {
+      $('#tag-rename-error').text("Tag Name Already Exists")  
+    }
   },
   
   deleteTag: function (event) {
@@ -80,6 +92,14 @@ EvernoteClone.Views.TagsIndex = Backbone.View.extend({
     tag.destroy();
     this._removeMidView();
     this._removeRightView();
+  },
+  
+  _tagNameAvail: function (name) {
+    if ($.inArray(name, EvernoteClone.tags.pluck('name')) === -1) {
+      return true
+    } else {
+      return false
+    }
   },
   
   _swapMidView: function (view) {

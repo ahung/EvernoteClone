@@ -16,10 +16,14 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
   template: JST['notes/index'],
   
   render: function () {
+    var activeId = $(this.$el.find('.active')).data('id')
     var renderedContent = this.template({
       notes: this.collection
     });
     this.$el.html(renderedContent);
+    if (activeId) {
+      $(this.$el.find('a[data-id=' + activeId + ']')).addClass('active');
+    }
     $(this.$el.find(".drag-note")).draggable({
       revert: "invalid"
     });
@@ -40,8 +44,6 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
   
   showNote: function (event) {
     var that = this;
-    $(".note-link").removeClass('active');
-    $(event.currentTarget).addClass('active');
     var id = $(event.currentTarget).data('id');
     var note = this.collection.get(id);
     this.renderNote(note);
@@ -86,11 +88,23 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
     var $form = $(event.currentTarget);
     var params = $form.serializeJSON();
     var notebook = EvernoteClone.notebooks.get(id);
-    notebook.save(params['notebook'], {
-      success: function () {
-        EvernoteClone.notebooks.sort();
-      }
-    });
+    if (this._notebookNameAvail(params['notebook'].name)) {
+      notebook.save(params['notebook'], {
+        success: function () {
+          EvernoteClone.notebooks.sort();
+        }
+      });
+    } else {
+      $('#notebook-rename-error').text("Notebook Name Already Exists")  
+    }
+  },
+  
+  _notebookNameAvail: function (name) {
+    if ($.inArray(name, EvernoteClone.notebooks.pluck('name')) === -1) {
+      return true
+    } else {
+      return false
+    }
   },
   
   _swapRightView: function (view) {

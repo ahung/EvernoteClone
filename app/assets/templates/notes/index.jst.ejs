@@ -13,6 +13,7 @@
           <%= notes.notebook.escape("name") %>
         <span class="caret"></span></button>
       <div class="dropdown-menu">
+        <span class="label label-danger" id="notebook-rename-error"></span>
         <form id="edit-notebook" data-id="<%= notes.notebook.id %>"> 
           <div class="form-group">
             <input type="text" class="form-control" name="notebook[name]" 

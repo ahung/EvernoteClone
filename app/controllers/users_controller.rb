@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-  before_filter :ensure_logged_in, :only => [:show]
-
   def create
     @user = User.new(params[:user])
 
     if @user.save
+      Notebook.create!({name:"#{@user.username}'s Notebook", user_id: @user.id})
       self.current_user = @user
       flash[:notices] = ["Account Created! Welcome!"]
       redirect_to root_url

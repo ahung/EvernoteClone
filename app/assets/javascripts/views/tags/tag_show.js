@@ -13,10 +13,14 @@ EvernoteClone.Views.ShowTag = Backbone.View.extend({
   template: JST['tags/show'],
   
   render: function () {
+    var activeId = $(this.$el.find('.active')).data('id')
     var renderedContent = this.template({
       tag: this.model
     });
     this.$el.html(renderedContent);
+    if (activeId) {
+      $('a[data-id=' + activeId + ']').addClass('active');
+    }
     return this;
   },
   
@@ -33,7 +37,8 @@ EvernoteClone.Views.ShowTag = Backbone.View.extend({
         EvernoteClone.currentTags = note.get('tags');
         var showNote = new EvernoteClone.Views.ShowNote({ 
           model: note,
-          collection: EvernoteClone.noteTags
+          collection: EvernoteClone.noteTags,
+          tag: that.model
         });
         that._swapRightView(showNote);
       }

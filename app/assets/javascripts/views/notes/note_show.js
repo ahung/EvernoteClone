@@ -1,8 +1,13 @@
 EvernoteClone.Views.ShowNote = Backbone.View.extend({
   initialize: function (options) {
+    $('.note-link').removeClass('active');
+    $('.note-link[data-id=' + this.model.id + ']').addClass('active');
     this.listenTo(EvernoteClone.tags, "add remove sort change:name", 
       this.render);
     this.listenTo(EvernoteClone.currentTags, "add remove", this.render);
+    if (options.tag) {
+      this.tag = options.tag;
+    }
   },
   
   events: {
@@ -18,8 +23,10 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
   template: JST['notes/show'],
   
   render: function () {
+    var notebook = EvernoteClone.notebooks.get(this.model.get('notebook_id'));
     var renderedContent = this.template({
       note: this.model,
+      notebook: notebook,
       tags: EvernoteClone.tags,
       currentTags: EvernoteClone.currentTags
     });
@@ -106,14 +113,17 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
   },
   
   removeTag: function (event) {
+    var that = this;
     var id = $(event.currentTarget).data("id");
     var currentTag = EvernoteClone.currentTags.get(id)
     var noteTag = EvernoteClone.noteTags.findWhere({tag_id: id});
     noteTag.destroy({
       success: function () {
         EvernoteClone.currentTags.remove(currentTag);
+        if (EvernoteClone.taggedNotes && (that.tag.id === currentTag.id)) {
+          EvernoteClone.taggedNotes.remove(that.model);  
+        }
       }
     });
-    
   }
 })

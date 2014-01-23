@@ -1,5 +1,5 @@
 <br>
-<h3>Contained in: <%= EvernoteClone.notes.notebook.get('name') %>
+<h3>Contained in: <%= notebook.get('name') %>
   <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" 
     data-target="#delete-note-modal"><span class="glyphicon glyphicon-trash">
       </span></button></h3>
@@ -21,7 +21,7 @@
       data-toggle="dropdown"> + Tag <span class="caret"></span></button>
     <ul class="dropdown-menu btn-xs">
       <% tags.each(function(tag) { %> 
-        <% if (true) { %> 
+        <% if ($.inArray(tag.get('name'), currentTags.pluck('name')) === -1) { %> 
           <li><a href="#" class="btn btn-xs add-tag" data-id="<%= tag.id %>">
             <%= tag.escape('name')%></a></li>
         <% } %>
