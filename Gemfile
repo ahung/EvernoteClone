@@ -25,6 +25,8 @@ group :development do
   gem 'binding_of_caller'
 end
 
+gem 'rails_12factor'
+
 gem 'jquery-rails'
 gem 'backbone-on-rails'
 gem 'jquery-ui-rails'

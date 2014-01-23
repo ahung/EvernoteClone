@@ -3,8 +3,8 @@
 <div class="bs-sidebar">
   <ul class="nav bs-sidebar nav-pills nav-stacked">
     <% tag.get('notes').each(function (note) { %>
-      <li><a href="#" class="note-link" data-id="<%= note.id %>">
-        <%= note.escape("title") %></a></li>
+      <li><a href="#" class="note-link" data-id="<%= note.id %>"><span 
+          class="glyphicon glyphicon-file"> <%= note.escape("title") %></a></li>
     <% }); %>
   </ul>
 </div>

@@ -5,41 +5,44 @@
     <button class="btn btn-primary" id="new-note"> + New Note </button>
   </div>
   
-  <div class="col-xs-3">
+  <div class="col-xs-4">
+  
+    <div class="btn-group">
+      <button class="btn btn-default dropdown-toggle" type="button" 
+        data-toggle="dropdown"><span class="glyphicon glyphicon-book"> 
+          <%= notes.notebook.escape("name") %>
+        <span class="caret"></span></button>
+      <div class="dropdown-menu">
+        <form id="edit-notebook" data-id="<%= notes.notebook.id %>"> 
+          <div class="form-group">
+            <input type="text" class="form-control" name="notebook[name]" 
+              id="notebook_name" placeholder="<%= notes.notebook.escape('name')%>">
+          </div>
+      
+          <input type="submit" class="btn btn-default" 
+            value="Rename Notebook">
+        </form>
+      </div>
+    </div>
+    
   </div>
   
   <div class="col-xs-4">
     <button class="btn btn-danger" data-toggle="modal" 
-      data-target="#delete-notebook-modal"> Delete Notebook </button>
+      data-target="#delete-notebook-modal"><span 
+        class="glyphicon glyphicon-trash"></span></button>
   </div>
   
 </div>
 <br>
-
-<div class="btn-group">
-  <button class="btn btn-default dropdown-toggle" type="button" 
-    data-toggle="dropdown"><%= notes.notebook.escape("name") %>
-    <span class="caret"></span></button>
-  <div class="dropdown-menu">
-    <form id="edit-notebook" data-id="<%= notes.notebook.id %>"> 
-      <div class="form-group">
-        <input type="text" class="form-control" name="notebook[name]" 
-          id="notebook_name" placeholder="<%= notes.notebook.escape('name')%>">
-      </div>
-      
-      <input type="submit" class="btn btn-default" 
-        value="Rename Notebook">
-    </form>
-  </div>
-</div>
 
 <br>
 <div class="bs-sidebar">
   <ul class="nav bs-sidebar nav-pills nav-stacked">
     <% notes.each(function (note) { %>
       <li class="drag-note" data-id="<%= note.id %>">
-        <a href="#" class="note-link" data-id="<%= note.id %>">
-        <%= note.escape("title") %></a></li>
+        <a href="#" class="note-link" data-id="<%= note.id %>"><span 
+        class="glyphicon glyphicon-file"> <%= note.escape("title") %></a></li>
     <% }); %>
   </ul>
 </div>

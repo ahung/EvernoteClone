@@ -1,8 +1,9 @@
 <br>
-
-<button type="button" class="btn btn-danger" data-toggle="modal" 
-  data-target="#delete-note-modal"> Delete Note </button>
-<br><br>
+<h3>Contained in: <%= EvernoteClone.notes.notebook.get('name') %>
+  <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" 
+    data-target="#delete-note-modal"><span class="glyphicon glyphicon-trash">
+      </span></button></h3>
+<br>
 
 <div class="row" id="note-stat">
   <div class="col-xs-6">
@@ -20,15 +21,19 @@
       data-toggle="dropdown"> + Tag <span class="caret"></span></button>
     <ul class="dropdown-menu btn-xs">
       <% tags.each(function(tag) { %> 
-        <li><a href="#" class="btn btn-xs add-tag" data-id="<%= tag.id %>">
-          <%= tag.escape('name')%></a></li>
+        <% if (true) { %> 
+          <li><a href="#" class="btn btn-xs add-tag" data-id="<%= tag.id %>">
+            <%= tag.escape('name')%></a></li>
+        <% } %>
       <% }); %> 
     </ul>
   </div>
   <span class="label label-primary">Current Tags:</span>
     <% currentTags.each(function(currentTag) { %>
       <div class="btn-group">
-        <button class="btn btn-info btn-xs"><%= currentTag.escape('name') %></button>
+        <button class="btn btn-info btn-xs"><span 
+          class="glyphicon glyphicon-tag">
+            </span> <%= currentTag.escape('name') %></button>
         <button type="button" class="btn btn-info btn-xs remove-tag" 
           data-id="<%= currentTag.id %>">&times;</button>
       </div>
