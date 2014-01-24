@@ -1,12 +1,6 @@
 // Place all the styles related to the Notebooks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.active {
-  background-color: lightgray;
-  font-weight: bold;
-  font-style: italic;
-}
-
 .panel .panel-heading {
   background-color: cornsilk;
 }
@@ -22,6 +16,12 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.active {
+  background-color: lightgray;
+  font-weight: bold;
+  font-style: italic;
 }
 
 #notebook-dropdown {

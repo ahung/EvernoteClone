@@ -16,8 +16,6 @@ $navbar-inverse-color: white;
 $navbar-inverse-brand-color: white;
 $navbar-inverse-link-color: white;
 
-
-
 @import "bootstrap";
 
 html, body {
@@ -32,7 +30,7 @@ body {
 
 .navbar-inverse {
   margin-bottom: 0px;
-//  border-color: cornsilk;
+  border-color: cornsilk;
 }
 
 .container {
