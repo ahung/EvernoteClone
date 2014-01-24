@@ -1,4 +1,6 @@
 <br>
+<button class="btn btn-primary" disabled="disabled"><b><u>Tags</u></b></button>
+<hr>
 <div class="btn-group">
     <span class="label label-danger" id="tag-error"></span>
     <form class="form-inline" id="create-tag"> 
@@ -10,11 +12,8 @@
 
 <br><br>
 
-<b><u>Tags</u></b>
-<br>
-
 <% tags.each(function(tag){ %> 
-  <div class="btn-group" id="tag-list">
+  <div class="btn-group text-center tag-group" id="tag-list">
     <button type="button" class="btn btn-info tag-link" data-id="<%= tag.id %>">
     <span class="glyphicon glyphicon-tag"> <%= tag.escape("name")%></button>
     <button type="button" class="btn btn-info dropdown-toggle" 
@@ -24,8 +23,9 @@
         <form id="rename-tag" data-id="<%= tag.id %>"> 
           <div class="form-group">
             <input type="submit" value="Rename Tag">
-            <input type="text" class="form-control btn btn-default" name="tag[name]" 
-              id="tag_name" placeholder="<%= tag.escape('name')%>">
+            <input type="text" class="form-control btn btn-default" 
+              name="tag[name]" id="tag_name" 
+              placeholder="<%= tag.escape('name')%>">
           </div>
         </form></li>
       <li class="divider"></li>

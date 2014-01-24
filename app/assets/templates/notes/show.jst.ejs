@@ -1,8 +1,11 @@
 <br>
-<h3>Contained in: <%= notebook.get('name') %>
+<p class="text-right">Contained in:  <button class="btn btn-primary" 
+  disabled="disabled"><b><u><%= notebook.get('name') %></u></b></button>
+ 
   <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" 
     data-target="#delete-note-modal"><span class="glyphicon glyphicon-trash">
-      </span></button></h3>
+      </span></button>
+      </p>
 <br>
 
 <div class="row" id="note-stat">
@@ -43,7 +46,7 @@
 </div>
 
 <div class="note">
-  <h3 class="note-title" id="title"><%= note.escape("title") %></h3>
+  <h3 class="note-title text-center" id="title"><%= note.escape("title") %></h3>
 <hr>
   <p class="note-body" 
     id="body"><%= note.escape("body").replace(/\n/g,"\n<br>") %></p>

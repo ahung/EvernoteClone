@@ -1,7 +1,11 @@
-<b><u>Notes With '<%= tag.escape('name') %>' Tag</u></b>
-<br>
+<h2><b><u>Notes With <button class="btn btn-primary" disabled="disabled"><span
+   class="glyphicon glyphicon-tag"></span> <%= tag.escape('name') %></button Tag</u></b></h2>
+<hr>
 <div class="bs-sidebar">
   <ul class="nav bs-sidebar nav-pills nav-stacked">
+    <% if (tag.get('notes').length < 1) { %>
+      <li class="disabled"><a href="#">No Notes Have This Tag!</a></li>
+    <% } %>
     <% tag.get('notes').each(function (note) { %>
       <li><a href="#" class="note-link" data-id="<%= note.id %>"><span 
           class="glyphicon glyphicon-file"> <%= note.escape("title") %></a></li>

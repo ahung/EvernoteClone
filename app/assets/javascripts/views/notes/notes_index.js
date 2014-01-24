@@ -25,7 +25,13 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
       $(this.$el.find('a[data-id=' + activeId + ']')).addClass('active');
     }
     $(this.$el.find(".drag-note")).draggable({
-      revert: "invalid"
+      revert: "invalid",
+      start: function (event, ui) {
+        $(event.target).addClass("dragging")
+      },
+      stop: function (event, ui) {
+        $(event.target).removeClass("dragging");
+      }
     });
     return this;
   },

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       redirect_to root_url
     else
       self.current_user = user
-      flash[:notices] = ["Welcome Back!"]
+      flash[:notices] = ["Welcome, #{user.username}!"]
       redirect_to root_url
     end
   end

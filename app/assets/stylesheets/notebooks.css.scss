@@ -1,3 +1,23 @@
 // Place all the styles related to the Notebooks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.active {
+  background-color: lightgray;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.notebook-link, .note-link {
+  background: dodgerblue;
+  color: black;
+  border: black thin solid;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#notebook-dropdown {
+  width: 160px;
+  height: 35px;
+}
+

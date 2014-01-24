@@ -32,7 +32,15 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
         if (note.get('notebook_id') != notebookId) {
           note.save({notebook_id: notebookId}, {
             success: function () {
-              EvernoteClone.notes.remove(note)
+              var notebook = EvernoteClone.notebooks.get(notebookId);
+              var $span = $("<span class='label label-success'>");
+              $span.text(note.get('title') + ' moved to ' + 
+                notebook.get('name'));
+              $('#message-area').append($span);
+              setTimeout(function () {
+                $('#message-area').html('');
+              }, 3000);
+              EvernoteClone.notes.remove(note);
             }
           });
         } else {

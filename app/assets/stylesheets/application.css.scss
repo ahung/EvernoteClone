@@ -21,77 +21,19 @@ html, body {
 //  overflow: hidden;
 }
 
+.navbar-default {
+  margin-bottom: 0px;
+  background-color: lightskyblue;
+//  border-color: lightsteelblue;
+}
+
 .container {
   height: 100%;
   width: 100%;
 }
 
-#note-view {
-  height: 100%;
-}
-
-#left-column {
-  border: black solid;
-  height: 100%;
-//  overflow: scroll;
-}
-
-#middle-column {
-  border: black solid;
-  height: 100%;
-//  overflow: scroll;
-}
-
-#right-column {
-  border: black solid;
-  height: 100%;
-//  overflow: scroll;
-}
-
-.notebook-link, .note-link {
-  border: black thin solid;
-}
-
-.active {
-  background-color: lightgray;
-  font-weight: bold;
-  font-style: italic;
-}
-
-#tag_name {
-  width: 50%;
-}
-
-#tag-list {
-  width: 75%;
-}
-
-#tag_name {
-  width: 75%;
-}
-
-#note-stat {
-  border-top: black solid;
-  border-bottom: black solid;
-}
-
-.note-tag-area {
-
-}
-
-.note {
-  border: black thin solid;
-}
-
-.note-title {
-
-}
-
-.note-body {
-  width: 800px;
-  height: 300px;
-}
-
-.selector {
-
+.ui-draggable-dragging {
+  transform:rotate(7deg);
+  -ms-transform:rotate(7deg);
+  -webkit-transform:rotate(7deg);
 }

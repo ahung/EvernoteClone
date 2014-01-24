@@ -1,5 +1,9 @@
 <div class="jumbotron text-center">
   <h1> Welcome to Clevernote!</h1>
   <h2> An Evernote Clone </h2>
-  <h3> Please Sign Up or Log In to Begin </h3>
+  <form action="/session" method="POST">
+    <input type="hidden" name="user[username]" value="Guest">
+    <input type="hidden" name="user[password]" value="guestpass">
+    <input type="submit" class='btn btn-lg btn-success' value="Try a Demo!">
+  </form>
 </div>

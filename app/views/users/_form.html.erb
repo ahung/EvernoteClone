@@ -1,36 +1,40 @@
 <div class="modal fade" id="sign-up-modal">
   <div class="modal-dialog">
     <div class="modal-content">
-      <h1 class="text-center">Sign Up</h1>
-      
-      <form class="form-horizontal" action="/users" method="POST">
-        <input 
-          type="hidden" 
-          name="authenticity_token"
-          value="<%= form_authenticity_token %>">
+      <div class="modal-header">
+        <h1 class="text-center">Sign Up</h1>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" action="/users" method="POST">
+          <input 
+            type="hidden" 
+            name="authenticity_token"
+            value="<%= form_authenticity_token %>">
 
-        <div class="form-group">  
-          <label class="col-xs-3 control-label" for="user_username">
-            Username</label>
-          <div class="col-xs-7">
-            <input type="text" class="form-control" name="user[username]" 
-            id="user_username" placeholder="Username">
+          <div class="form-group">  
+            <label class="col-xs-3 control-label" for="user_username">
+              Username</label>
+            <div class="col-xs-7">
+              <input type="text" class="form-control" name="user[username]" 
+              id="user_username" placeholder="Username">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-xs-3 control-label" for="user_password">
+              Password</label>
+            <div class="col-xs-7">
+              <input type="password" class="form-control" name="user[password]" 
+                id="user_password" placeholder="Password">
+            </div>
           </div>
         </div>
-
-        <div class="form-group">
-          <label class="col-xs-3 control-label" for="user_password">
-            Password</label>
-          <div class="col-xs-7">
-            <input type="password" class="form-control" name="user[password]" 
-              id="user_password" placeholder="Password">
+        <div class="modal-footer">
+          <div class="text-center">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+               Cancel</button>
+            <input type="submit" class="btn btn-primary" value="Sign Up">
           </div>
-        </div>
-        
-        <div class="text-center">
-          <button type="button" class="btn btn-default" data-dismiss="modal">
-             Cancel</button>
-          <input type="submit" class="btn btn-primary" value="Sign Up">
         </div>
       </form>
       <br>

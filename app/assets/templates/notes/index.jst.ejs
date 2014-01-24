@@ -1,43 +1,37 @@
 <br>
 <div class="row">
-
-  <div class="col-xs-4">
-    <button class="btn btn-primary" id="new-note"> + New Note </button>
+  <div class="col-xs-2 col-xs-offset-1">
+    <button class="btn btn-primary" id="new-note"> + Note </button>
   </div>
   
-  <div class="col-xs-4">
-  
+  <div class="col-xs-4 col-xs-offset-1">
     <div class="btn-group">
       <button class="btn btn-default dropdown-toggle" type="button" 
-        data-toggle="dropdown"><span class="glyphicon glyphicon-book"> 
-          <%= notes.notebook.escape("name") %>
-        <span class="caret"></span></button>
+        data-toggle="dropdown" id="notebook-dropdown"><span class="caret">
+        </span> <%= notes.notebook.escape("name") %></button>
       <div class="dropdown-menu">
         <span class="label label-danger" id="notebook-rename-error"></span>
-        <form id="edit-notebook" data-id="<%= notes.notebook.id %>"> 
+        <form class="text-center" id="edit-notebook" data-id="<%= notes.notebook.id %>"> 
           <div class="form-group">
             <input type="text" class="form-control" name="notebook[name]" 
               id="notebook_name" placeholder="<%= notes.notebook.escape('name')%>">
           </div>
-      
+  
           <input type="submit" class="btn btn-default" 
             value="Rename Notebook">
         </form>
       </div>
     </div>
-    
   </div>
   
-  <div class="col-xs-4">
+  <div class="col-xs-3 col-xs-offset-1">
     <button class="btn btn-danger" data-toggle="modal" 
       data-target="#delete-notebook-modal"><span 
         class="glyphicon glyphicon-trash"></span></button>
   </div>
-  
 </div>
-<br>
 
-<br>
+<hr>
 <div class="bs-sidebar">
   <ul class="nav bs-sidebar nav-pills nav-stacked">
     <% notes.each(function (note) { %>

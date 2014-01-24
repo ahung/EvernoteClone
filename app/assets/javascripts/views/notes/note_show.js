@@ -71,7 +71,6 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
     } else {
       this.render();
     }
-    
   },
   
   editNoteBody: function (event) {

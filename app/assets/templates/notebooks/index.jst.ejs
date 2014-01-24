@@ -1,35 +1,42 @@
-<br>
-<div class="btn-group">
-  <button class="btn btn-primary dropdown-toggle" type="button" 
-    data-toggle="dropdown"> + New Notebook </button>
-  <div class="dropdown-menu">
-    <span class="label label-danger" id="notebook-error"></span>
-    <form id="create-notebook"> 
-      <div class="form-group">
-        <input type="text" class="form-control" name="notebook[name]" 
-          id="notebook_name" placeholder="Notebook Name">
+<div class="panel-group" id="notebook-accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title text-center">
+        <a class="btn btn-primary" data-toggle="collapse" 
+          data-parent="#notebook-accordion" href="#collapseBook">
+          <span class="caret"></span> Notebooks </a>
+        <div class="btn-group"> 
+          <button class="btn btn-primary dropdown-toggle" type="button" 
+            data-toggle="dropdown"> + </button>
+          <div class="dropdown-menu">
+            <span class="label label-danger" id="notebook-error"></span>
+            <form class="text-center" id="create-notebook"> 
+              <div class="form-group">
+                <input type="text" class="form-control" name="notebook[name]" 
+                  id="notebook_name" placeholder="Notebook Name">
+              </div>
+              <input type="submit" class="btn btn-primary" 
+                value="Create Notebook">
+            </form>
+          </div>
+        </div>
+      </h4>
+    </div>
+    <div id="collapseBook" class="panel-collapse collapse in">
+      <div class="panel-body">
+        <div class="bs-sidebar">
+          <ul class="nav bs-sidebar nav-pills nav-stacked">
+            <% notebooks.each(function(notebook){ %> 
+              <li class="drop-note" data-id="<%= notebook.id %>">
+              <a href="#" class="notebook-link" data-id="<%= notebook.id %>">
+                <span class="glyphicon glyphicon-book"> 
+                <%= notebook.escape("name") %></a></li>
+            <% }); %>
+          </ul>
+        </div>
       </div>
-      
-      <input type="submit" class="btn btn-primary" 
-        value="Create Notebook">
-    </form>
+    </div>
   </div>
-</div>
-
-<br><br>
-
-<b><u>Notebooks</u></b>
-<br>
-
-<div class="bs-sidebar">
-  <ul class="nav bs-sidebar nav-pills nav-stacked">
-    <% notebooks.each(function(notebook){ %> 
-      <li class="drop-note" data-id="<%= notebook.id %>">
-      <a href="#" class="notebook-link" data-id="<%= notebook.id %>"><span 
-          class="glyphicon glyphicon-book"> <%= notebook.escape("name") %></a>
-          </li>
-    <% }); %>
-  </ul>
 </div>
 
 <script type="text/javascript">
