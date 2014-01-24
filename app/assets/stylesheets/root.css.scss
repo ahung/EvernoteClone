@@ -9,14 +9,22 @@
 }
 
 #middle-column {
-  background: white;
+  background: cornsilk;
   height: 100%;
   border-right: gray thin solid;
 //  overflow: scroll;
 }
 
 #right-column {
-  background: white;
+  background: cornsilk;
   height: 100%;
 //  overflow: scroll;
+}
+
+.jumbotron {
+  background: cornflowerblue;
+}
+
+.contact-link {
+  color: black;
 }

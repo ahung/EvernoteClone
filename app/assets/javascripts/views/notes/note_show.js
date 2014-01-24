@@ -65,6 +65,7 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
           } else {
             EvernoteClone.taggedNotes.sort();
           }
+          that._noteUpdated();
           that.render();
         }
       });
@@ -89,6 +90,7 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
     this.model.set(attrName, value);
     this.model.save(null, {
       success: function () {
+        that._noteUpdated();
         that.render();
       }
     });
@@ -124,5 +126,14 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
         }
       }
     });
+  },
+  
+  _noteUpdated: function () {
+    var $span = $("<span class='label label-success'>");
+    $span.text('Note has been saved!');
+    $('#message-area').append($span);
+    setTimeout(function () {
+      $('#message-area').html('');
+    }, 3000);
   }
 })

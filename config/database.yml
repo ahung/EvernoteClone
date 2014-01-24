@@ -18,4 +18,11 @@ development:
   database: EvernoteClone_development
   host: localhost
   pool: 5
+  
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: EvernoteClone_test
+  host: localhost
+  pool: 5
 

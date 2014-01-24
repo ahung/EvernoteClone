@@ -14,7 +14,4 @@ class RootController < ApplicationController
   def contact
   end
   
-  def support
-  end
-  
 end

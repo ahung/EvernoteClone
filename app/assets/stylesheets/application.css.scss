@@ -12,6 +12,11 @@
  *= require jquery.ui.all
  *= require_tree .
  */
+$navbar-inverse-color: white;
+$navbar-inverse-brand-color: white;
+$navbar-inverse-link-color: white;
+
+
 
 @import "bootstrap";
 
@@ -21,10 +26,13 @@ html, body {
 //  overflow: hidden;
 }
 
-.navbar-default {
+body {
+  background: cornsilk;
+}
+
+.navbar-inverse {
   margin-bottom: 0px;
-  background-color: lightskyblue;
-//  border-color: lightsteelblue;
+//  border-color: cornsilk;
 }
 
 .container {
