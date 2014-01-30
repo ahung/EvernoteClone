@@ -1,6 +1,6 @@
 # EvernoteClone (aka Clevernote)
 This is the repo for my final project for App Academy.  
-[Click Here to Try Out Clevernote](http://evernoteclone.herokuapp.com)
+[Click Here to Try Out Clevernote](http://evernoteclone.alberthung.net)
 
 ## Concept
 The goal of this project (within the allotted time of about a week and a half) was to clone the core functionality of Evernote's Web App. I picked Evernote because I had recently started using it more myself and thought it would be interesting to figure out how to implement similar features. The project was built using Ruby on Rails and Backbone.js. Thanks for taking the time to stop by and check out my work!
