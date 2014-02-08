@@ -12,7 +12,7 @@ The goal of this project (within the allotted time of about a week and a half) w
 * Drag/Drop Notes onto Notebooks to Move Them
 * Deleting of Notebooks/Notes with Confirmation Modal
 * Creation, Renaming, Deletion of Tags
-* Add/Remove Tags from Notes
+* Add/Remove Tags from Notes (Optionally, add tags via drag and drop)
 * View List of Notes with a Specific Tag
 
 ## Features Not Yet Implemented
@@ -42,3 +42,4 @@ The goal of this project (within the allotted time of about a week and a half) w
 14. Implemented Adding/Removing Tags from a Note
 15. Fixed smaller bugs that did not hinder major functionality
 16. Added some styling with Bootstrap.
+17. Added Drag and Drop of Tags from Tag Index onto Note Show page
