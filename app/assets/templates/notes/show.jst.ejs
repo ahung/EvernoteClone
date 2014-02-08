@@ -1,74 +1,77 @@
-<br>
-<p class="text-right">Contained in:  <button class="btn btn-primary" 
-  disabled="disabled"><b><u><%= notebook.get('name') %></u></b></button>
+<div class="drop-tag" data-id="<%= note.id %>">
+  <br>
+  <p class="text-right">Contained in:  <button class="btn btn-primary" 
+    disabled="disabled"><b><u><%= notebook.get('name') %></u></b></button>
  
-  <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" 
-    data-target="#delete-note-modal"><span class="glyphicon glyphicon-trash">
-      </span></button>
-      </p>
-<br>
-
-<div class="row" id="note-stat">
-  <div class="col-xs-6">
-    <b>Created:</b> <i><%= new Date(note.get("created_at")) %></i>
-  </div>
-  <div class="col-xs-6">
-    <b>Last Edited:</b> <i><%= new Date(note.get("updated_at")) %></i>
-  </div>
-</div>
-<br>
-
-<div class="note-tag-area">
-  <div class="btn-group">
-    <button class="btn btn-default btn-xs dropdown-toggle" type="button" 
-      data-toggle="dropdown"> + Tag <span class="caret"></span></button>
-    <ul class="dropdown-menu btn-xs">
-      <% tags.each(function(tag) { %> 
-        <% if ($.inArray(tag.get('name'), currentTags.pluck('name')) === -1) { %> 
-          <li><a href="#" class="btn btn-xs add-tag" data-id="<%= tag.id %>">
-            <%= tag.escape('name')%></a></li>
-        <% } %>
-      <% }); %> 
-    </ul>
-  </div>
-  <span class="label label-primary">Current Tags:</span>
-    <% currentTags.each(function(currentTag) { %>
-      <div class="btn-group">
-        <button class="btn btn-info btn-xs"><span 
-          class="glyphicon glyphicon-tag">
-            </span> <%= currentTag.escape('name') %></button>
-        <button type="button" class="btn btn-info btn-xs remove-tag" 
-          data-id="<%= currentTag.id %>">&times;</button>
-      </div>
-    <% }); %>
+    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" 
+      data-target="#delete-note-modal"><span class="glyphicon glyphicon-trash">
+        </span></button>
+        </p>
   <br>
+
+  <div class="row" id="note-stat">
+    <div class="col-xs-6">
+      <b>Created:</b> <i><%= new Date(note.get("created_at")) %></i>
+    </div>
+    <div class="col-xs-6">
+      <b>Last Edited:</b> <i><%= new Date(note.get("updated_at")) %></i>
+    </div>
+  </div>
   <br>
-</div>
 
-<div class="note">
-  <h3 class="note-title text-center" id="title"><%= note.escape("title") %></h3>
-<hr>
-  <p class="note-body" 
-    id="body"><%= note.escape("body").replace(/\n/g,"\n<br>") %></p>
-</div>
-<br>
+  <div class="note-tag-area">
+    <div class="btn-group">
+      <button class="btn btn-default btn-xs dropdown-toggle" type="button" 
+        data-toggle="dropdown"> + Tag <span class="caret"></span></button>
+      <ul class="dropdown-menu btn-xs">
+        <% tags.each(function(tag) { %> 
+          <% if ($.inArray(tag.get('name'), currentTags.pluck('name')) === -1) { %> 
+            <li><a href="#" class="btn btn-xs add-tag" data-id="<%= tag.id %>">
+              <%= tag.escape('name')%></a></li>
+          <% } %>
+        <% }); %> 
+      </ul>
+    </div>
+    <span class="label label-primary">Current Tags:</span>
+      <% currentTags.each(function(currentTag) { %>
+        <div class="btn-group">
+          <button class="btn btn-info btn-xs"><span 
+            class="glyphicon glyphicon-tag">
+              </span> <%= currentTag.escape('name') %></button>
+          <button type="button" class="btn btn-info btn-xs remove-tag" 
+            data-id="<%= currentTag.id %>">&times;</button>
+        </div>
+      <% }); %>
+    <br>
+    <br>
+  </div>
 
-<div class="modal" id="delete-note-modal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4> Confirm Note Deletion </h4>
-      </div>
-      <div class="modal-body">
-        <p>Are You Sure You Want to Delete '<%= note.escape("title") %>' 
-          Forever?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">
-          Cancel</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal" 
-          id="delete-note" data-id="<%= note.id %>"> Delete </button>
+  <div class="note">
+    <h3 class="note-title text-center" id="title"><%= note.escape("title") %></h3>
+  <hr>
+    <p class="note-body" 
+      id="body"><%= note.escape("body").replace(/\n/g,"\n<br>") %></p>
+  </div>
+  <br>
+
+  <div class="modal" id="delete-note-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4> Confirm Note Deletion </h4>
+        </div>
+        <div class="modal-body">
+          <p>Are You Sure You Want to Delete '<%= note.escape("title") %>' 
+            Forever?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">
+            Cancel</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" 
+            id="delete-note" data-id="<%= note.id %>"> Delete </button>
+        </div>
       </div>
     </div>
   </div>
+
 </div>

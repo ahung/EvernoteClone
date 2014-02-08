@@ -24,6 +24,11 @@ EvernoteClone.Views.TagsIndex = Backbone.View.extend({
     if (activeId) {
       $(this.$el.find('button[data-id=' + activeId + ']')).addClass('active');
     }
+    $(this.$el.find(".drag-tag")).draggable({
+      cancel: false,
+      helper: 'clone',
+      appendTo: '#note-view'
+    });
     return this;
   },
   

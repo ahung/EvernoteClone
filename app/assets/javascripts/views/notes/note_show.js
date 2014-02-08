@@ -31,6 +31,30 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
       currentTags: EvernoteClone.currentTags
     });
     this.$el.html(renderedContent);
+    
+    $(this.$el.find(".drop-tag")).droppable({
+      accept: ".drag-tag",
+      hoverClass: "ui-state-hover",
+      drop: function (event, ui) {
+        var noteId = $(event.target).data('id');
+        var tagId = $(ui.draggable.context).data('id');
+        var currentTag = EvernoteClone.tags.get(tagId);
+        if (EvernoteClone.currentTags.where({
+          name: currentTag.get('name')
+        }).length === 0) {
+          var noteTag = new EvernoteClone.Models.TaggedNote({
+            tag_id: tagId,
+            note_id: noteId
+          });
+          noteTag.save(null, {
+            success: function () {
+              EvernoteClone.noteTags.add(noteTag);
+              EvernoteClone.currentTags.add(currentTag);
+            }
+          })
+        }
+      }
+    });
     return this;
   },
   
@@ -131,7 +155,7 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
   _noteUpdated: function () {
     var $span = $("<span class='label label-success'>");
     $span.text('Note has been saved!');
-    $('#message-area').append($span);
+    $('#message-area').html($span);
     setTimeout(function () {
       $('#message-area').html('');
     }, 3000);

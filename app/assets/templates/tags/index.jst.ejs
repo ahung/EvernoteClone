@@ -11,33 +11,33 @@
 </div>
 
 <br><br>
-<div class="row">
-  <div class="col-xs-offset-4">
-    <% tags.each(function(tag){ %> 
-      <div class="btn-group tag-group" id="tag-list">
-        <button type="button" class="btn btn-info tag-link" 
-          data-id="<%= tag.id %>"><span class="glyphicon glyphicon-tag"> 
-          <%= tag.escape("name")%></button>
-        <button type="button" class="btn btn-info dropdown-toggle" 
-          data-toggle="dropdown"><span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><span class="label label-danger" id="tag-rename-error"></span>
-            <form id="rename-tag" data-id="<%= tag.id %>"> 
-              <div class="form-group">
-                <input type="submit" value="Rename Tag">
-                <input type="text" class="form-control btn btn-default" 
-                  name="tag[name]" id="tag_name" 
-                  placeholder="<%= tag.escape('name')%>">
-              </div>
-            </form></li>
-          <li class="divider"></li>
-          <li class="divider"></li>
-          <li><a href="#" class="delete-tag btn btn-danger" 
-            data-id="<%= tag.id %>">Delete Tag</a></li>
-        </ul>
-      </div>
-    <% }); %>
-  </div>
+
+<div id="tag-index">
+  <% tags.each(function(tag){ %> 
+    <div class="btn-group tag-group drag-tag" data-id="<%= tag.id %>">
+      <button type="button" class="btn btn-info tag-link" 
+        data-id="<%= tag.id %>"><span class="glyphicon glyphicon-tag"> 
+        <%= tag.escape("name")%></button>
+      <button type="button" class="btn btn-info dropdown-toggle" 
+        data-toggle="dropdown"><span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><span class="label label-danger" id="tag-rename-error"></span>
+          <form id="rename-tag" data-id="<%= tag.id %>"> 
+            <div class="form-group align-center">
+              <input type="submit" class="btn btn-default" value="Rename Tag">
+              <input type="text" class="form-control" 
+                name="tag[name]" id="tag_name" 
+                placeholder="<%= tag.escape('name')%>">
+            </div>
+          </form></li>
+        <li class="divider"></li>
+        <li class="divider"></li>
+        <li><a href="#" class="delete-tag btn btn-danger" 
+          data-id="<%= tag.id %>">Delete Tag</a></li>
+      </ul>
+    </div>
+    <br>
+  <% }); %>
 </div>
 
 <script type="text/javascript">

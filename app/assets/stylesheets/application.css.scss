@@ -21,7 +21,6 @@ $navbar-inverse-link-color: white;
 html, body {
   height: 100%;
   width: 100%;
-//  overflow: hidden;
 }
 
 body {
@@ -39,6 +38,8 @@ body {
 }
 
 .ui-draggable-dragging {
+//  height: 30px;
+//  width: 60px;
   transform:rotate(7deg);
   -ms-transform:rotate(7deg);
   -webkit-transform:rotate(7deg);
