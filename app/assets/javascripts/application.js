@@ -18,6 +18,7 @@
 //= require bootstrap
 //= require underscore
 //= require backbone
+//= require etch
 //= require evernote_clone
 //= require_tree ../templates
 //= require_tree ./models

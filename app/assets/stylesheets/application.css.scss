@@ -17,6 +17,7 @@ $navbar-inverse-brand-color: white;
 $navbar-inverse-link-color: white;
 
 @import "bootstrap";
+@import "etch";
 
 html, body {
   height: 100%;
@@ -38,7 +39,6 @@ body {
 }
 
 .ui-draggable-dragging {
-//  height: 30px;
 //  width: 60px;
   transform:rotate(7deg);
   -ms-transform:rotate(7deg);

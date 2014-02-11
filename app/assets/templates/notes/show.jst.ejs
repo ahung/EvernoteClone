@@ -47,12 +47,11 @@
   </div>
 
   <div class="note">
-    <h3 class="note-title text-center" id="title"><%= note.escape("title") %></h3>
-  <hr>
-    <p class="note-body" 
-      id="body"><%= note.escape("body").replace(/\n/g,"\n<br>") %></p>
+    <h3 class="note-title text-center editable" id="title"><%= note.escape("title") %></h3>
+    <hr>
+    <div class="note-body editable" id="body" 
+      data-button-class="all"><%= note.get("body") %></div>
   </div>
-  <br>
 
   <div class="modal" id="delete-note-modal">
     <div class="modal-dialog">

@@ -5,6 +5,7 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
     this.listenTo(EvernoteClone.tags, "add remove sort change:name", 
       this.render);
     this.listenTo(EvernoteClone.currentTags, "add remove", this.render);
+    this.model.on("save", this.save, this);
     if (options.tag) {
       this.tag = options.tag;
     }
@@ -12,12 +13,9 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
   
   events: {
     "click #delete-note": "deleteNote",
-    "click .note-title": "editNoteTitle",
-    "click .note-body": "editNoteBody",
-    "blur input": "updateNoteTitle",
-    "blur textarea": "updateNoteBody",
     "click .add-tag": "addTag",
-    "click .remove-tag": "removeTag"
+    "click .remove-tag": "removeTag",
+    "mousedown .editable": "editableClick"
   },
   
   template: JST['notes/show'],
@@ -31,7 +29,6 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
       currentTags: EvernoteClone.currentTags
     });
     this.$el.html(renderedContent);
-    
     $(this.$el.find(".drop-tag")).droppable({
       accept: ".drag-tag",
       hoverClass: "ui-state-hover",
@@ -67,52 +64,16 @@ EvernoteClone.Views.ShowNote = Backbone.View.extend({
     });
   },
   
-  editNoteTitle: function (event) {
-    var id = $(event.currentTarget).attr('id');
-    var $input = $("<input type='text' class='form-control'>");
-    $input.val($(event.currentTarget).text());
-    $input.attr("data-field", id);
-    $(event.currentTarget).replaceWith($input);
-    $input.focus();
-  },
+  editableClick: etch.editableInit,
   
-  updateNoteTitle: function (event) {
+  save: function () {
     var that = this;
-    var attrName = $(event.currentTarget).data("field");
-    var value = $(event.currentTarget).val();
-    if (value != "") {
-      this.model.set(attrName, value);
-      this.model.save(null, {
-        success: function () {
-          if (EvernoteClone.notes) {
-            EvernoteClone.notes.sort();
-          } else {
-            EvernoteClone.taggedNotes.sort();
-          }
-          that._noteUpdated();
-          that.render();
-        }
-      });
-    } else {
-      this.render();
-    }
-  },
-  
-  editNoteBody: function (event) {
-    var id = $(event.currentTarget).attr('id');
-    var $textarea = $("<textarea class='form-control' rows='15'>");
-    $textarea.val($(event.currentTarget).text());
-    $textarea.attr("data-field", id);
-    $(event.currentTarget).replaceWith($textarea);
-    $textarea.focus();
-  },
-  
-  updateNoteBody: function (event) {
-    var that = this;
-    var attrName = $(event.currentTarget).data("field");
-    var value = $(event.currentTarget).val();
-    this.model.set(attrName, value);
-    this.model.save(null, {
+    var title = this.$("#title").html();
+    var body = this.$("#body").html();
+    this.model.save({
+      title: title, 
+      body: body
+    }, {
       success: function () {
         that._noteUpdated();
         that.render();
