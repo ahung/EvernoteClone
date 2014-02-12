@@ -2,15 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .panel .panel-heading {
-  background-color: cornsilk;
+  background-color: azure;
 }
 
 .panel-body {
-  background: cornsilk;
+  background: azure;
+}
+
+.ui-state-hover a{
+  background: gray;
 }
 
 .notebook-link, .note-link {
-//  background: dodgerblue;
+  background: dodgerblue;
   color: black;
   border: black thin solid;
   overflow: hidden;
@@ -19,13 +23,12 @@
 }
 
 .active {
-  background-color: lightgray;
+  background-color: gray;
   font-weight: bold;
   font-style: italic;
 }
 
 #notebook-dropdown {
   width: 160px;
-//  height: 35px;
 }
 

@@ -4,23 +4,22 @@
 #left-column {
   height: 100%;
   border-right: gray thin solid;
+  overflow: auto;
 }
 
 #middle-column {
-  background: cornsilk;
+  background: azure;
   height: 100%;
   border-right: gray thin solid;
+  overflow: auto;
 }
 
 #right-column {
-  background: cornsilk;
+  background: azure;
   height: 100%;
+  overflow: auto;
 }
 
 .jumbotron {
-  background: cornflowerblue;
-}
-
-.contact-link {
-  color: black;
+  background: azure;
 }

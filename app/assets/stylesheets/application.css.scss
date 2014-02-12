@@ -12,6 +12,7 @@
  *= require jquery.ui.all
  *= require_tree .
  */
+
 $navbar-inverse-color: white;
 $navbar-inverse-brand-color: white;
 $navbar-inverse-link-color: white;
@@ -25,21 +26,23 @@ html, body {
 }
 
 body {
-  background: cornsilk;
+  background: azure;
 }
 
 .navbar-inverse {
+  width: 100%;
+  position: absolute;
   margin-bottom: 0px;
-  border-color: cornsilk;
+  border-color: azure;
 }
 
 .container {
   height: 100%;
   width: 100%;
+  padding: 0px;
 }
 
 .ui-draggable-dragging {
-//  width: 60px;
   transform:rotate(7deg);
   -ms-transform:rotate(7deg);
   -webkit-transform:rotate(7deg);

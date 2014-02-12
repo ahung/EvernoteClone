@@ -44,6 +44,7 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
             }
           });
         } else {
+          $(ui.draggable).remove();
           EvernoteClone.notes.sort();
         }
       }
