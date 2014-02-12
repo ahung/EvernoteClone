@@ -1,11 +1,12 @@
 class User < ActiveRecord::Base
-  attr_accessible :username, :password
+  attr_accessible :username, :password, :password_confirmation
   attr_reader :password
   
   before_validation :generate_session_token, :on => :create
   validates :username, :password_digest, :session_token, :presence => :true
   validates :username, :session_token, :uniqueness => true
   validates :password, :length => { :minimum => 6, :allow_nil => true }
+  validates :password, :confirmation => :true
   
   has_many :notebooks
   has_many :notes

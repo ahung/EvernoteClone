@@ -36,6 +36,13 @@ body {
   border-color: azure;
 }
 
+#errors, #notices {
+  position: absolute;
+  top: 0;
+  right: 37.5%;
+  width: 25%;
+}
+
 .container {
   height: 100%;
   width: 100%;

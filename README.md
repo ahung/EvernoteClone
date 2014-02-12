@@ -9,6 +9,8 @@ The goal of this project (within the allotted time of about a week and a half) w
 * Creating/Renaming Notebooks with Drop Down Forms
 * Creation of Notes within Notebooks
 * Editing of Notes by Clicking on Respective Fields
+* Body with Rich Text (Bold, Italics, Underline, Bullets)
+* Save Changes by clicking on Save Button in Editing Toolbar
 * Drag/Drop Notes onto Notebooks to Move Them
 * Deleting of Notebooks/Notes with Confirmation Modal
 * Creation, Renaming, Deletion of Tags
@@ -16,14 +18,15 @@ The goal of this project (within the allotted time of about a week and a half) w
 * View List of Notes with a Specific Tag
 
 ## Features Not Yet Implemented
-* Note Body with Full Text Formatting
 * Search Bar to Find Content in Notes
+* Option to Sort Lists Based on Other Criteria
+* Add Email and Password Recovery
 * Creation of Stacks to Group Notebooks
 * Creation of Tag Groups/Sub Tags
 * Enable Sharing with Other Users
 * Enable Sharing to Social Media
 * Shortcut Area for Notebooks/Notes to be Added for Quick Access
-* Option to Sort Lists Based on Other Criteria
+
 
 ## Process Overview
 1. Created Authorization (using bcrypt) with a User model and a Users and Sessions Controller
@@ -43,3 +46,5 @@ The goal of this project (within the allotted time of about a week and a half) w
 15. Fixed smaller bugs that did not hinder major functionality
 16. Added some styling with Bootstrap.
 17. Added Drag and Drop of Tags from Tag Index onto Note Show page
+18. Utilized etch.js to get rich text in note body
+19. Added Password Confirmation to User Sign Up
