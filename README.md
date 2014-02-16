@@ -3,7 +3,9 @@ This is the repo for my final project for App Academy.
 [Click Here to Try Out Clevernote](http://clevernote.alberthung.net)
 
 ## Concept
-The goal of this project (within the allotted time of about a week and a half) was to clone the core functionality of Evernote's Web App. I picked Evernote because I had recently started using it more myself and thought it would be interesting to figure out how to implement similar features. The project was built using Ruby on Rails and Backbone.js. Thanks for taking the time to stop by and check out my work!
+The goal of this project (within the allotted time of about a week and a half) was to clone the core functionality of Evernote's Web App. I picked Evernote because I had recently started using it more myself and thought it would be interesting to figure out how to implement similar features. The project was built using Ruby on Rails and Backbone.js. Thanks for taking the time to stop by and check out my work!  
+
+Note: While the allotted time for the project may have passed, there is still a lot to be done and I plan to keep working to add the features not yet implemented listed below and continue to log the process
 
 ## Current Features
 * Creating/Renaming Notebooks with Drop Down Forms
@@ -44,7 +46,7 @@ The goal of this project (within the allotted time of about a week and a half) w
 13. In Notes Controller, nested tags for a note to be able to keep track of current tags
 14. Implemented Adding/Removing Tags from a Note
 15. Fixed smaller bugs that did not hinder major functionality
-16. Added some styling with Bootstrap.
+16. Added some styling with Bootstrap. (End of Allotted Time)
 17. Added Drag and Drop of Tags from Tag Index onto Note Show page
 18. Utilized etch.js to get rich text in note body
 19. Added Password Confirmation to User Sign Up
