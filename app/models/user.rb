@@ -8,9 +8,9 @@ class User < ActiveRecord::Base
   validates :password, :length => { :minimum => 6, :allow_nil => true }
   validates :password, :confirmation => :true
   
-  has_many :notebooks
-  has_many :notes
-  has_many :tags
+  has_many :notebooks, :dependent => :destroy
+  has_many :notes, :dependent => :destroy
+  has_many :tags, :dependent => :destroy
   
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)

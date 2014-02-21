@@ -29,6 +29,9 @@ group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
+  gem "launchy", "~> 2.4.2"
 end
 
 gem 'rails_12factor'
