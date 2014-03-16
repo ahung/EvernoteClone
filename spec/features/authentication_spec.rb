@@ -1,21 +1,15 @@
 require 'spec_helper'
-# require 'database_cleaner'
 
-# DatabaseCleaner.strategy = :transaction
-# DatabaseCleaner.clean_with(:truncation)
-
-
-feature 'new user sign up' do 
+feature 'user sign up' do 
   
-  it 'has a Sign Up button' do
+  it 'has a Sign Up link' do
     visit('/')
     expect(page).to have_content 'Sign Up'
   end
   
   feature 'signing up a new user', :js => true do
 
-    it 'shows list of notebooks and tags' do
-      # DatabaseCleaner.start
+    it 'creates account and logs in' do
       visit('/')
       click_link('Sign Up')
       within('#sign-up-modal') do
@@ -25,14 +19,13 @@ feature 'new user sign up' do
         click_button 'Create Account'
       end
       expect(page).to have_content 'Account Created!'
-      # DatabaseCleaner.clean
     end
     
   end
   
 end
 
-feature 'log in user' do
+feature 'user log in' do
   
   it 'has a log in form' do
     visit('/')
